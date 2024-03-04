@@ -91,9 +91,9 @@ public class HomePage extends BaseClass{
 		extentInfoLog("Heading is displayed : ",actualHeading);
 		Action.explicitWaitForElementTobeclickable(this.learnMoreBtn, 10);
 		Action.performActionwithExtentInfoLog(this.learnMoreBtn, "click",
-				"Clicking on : Learn More" );
+				"Clicking on : " + learnMoreBtn.getText());
 		Action.verifyPageUrl(expectedUrl);
-		extentInfoLog("Successfully verified URL!","");
+		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 	}
 
 	/**
@@ -114,10 +114,10 @@ public class HomePage extends BaseClass{
 		Action.performActionwithExtentInfoLog(this.allPdctBtn, "click",
 				"Clicking on : " + allPdctBtn.getText());
 		Action.verifyPageUrl(expectedUrl);
-		extentInfoLog("URL Verified!","");
+		extentInfoLog("URL Verified : ", baseURI+pdctURL);
 		Action.navigateBack();	
 		Action.performActionwithExtentInfoLog(this.getPdct(productName), "click",
-				"Clicking on : " + getPdct(productName).getText());
+				"Clicking on : " + productName);
 		Action.verifyPageUrl(pdctURL);
 		Action.navigateBack();
 	}
@@ -148,11 +148,10 @@ public class HomePage extends BaseClass{
 		extentInfoLog("Related Content Section is displayed : ",Action.isDisplayed(driver,this.relatedContent));
 		String actualHeading = this.relatedContent.getText();
 		Assert.assertEquals(actualHeading, expectedHeading);
-		System.out.println(this.getRelatedContentCard(index));
 		Action.performActionwithExtentInfoLog(this.getRelatedContentCard(index), "click",
 				"Clicking on : " + getRelatedContentCard(index).getText());
 		Action.verifyPageUrl(expectedUrl);
-		extentInfoLog("URL Verified!","");
+		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 	}
 
 	/**
@@ -172,7 +171,7 @@ public class HomePage extends BaseClass{
 		Action.performActionwithExtentInfoLog(this.getAllergiesLearnMore(sectionBtn), "click",
 				"Clicking on : " + getAllergiesLearnMore(sectionBtn).getText());
 		Action.verifyPageUrl(expectedUrl);
-		extentInfoLog("Successfully verified URL!","");
+		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 		Action.navigateBack();
 	}
 
@@ -192,7 +191,7 @@ public class HomePage extends BaseClass{
 		Action.performActionwithExtentInfoLog(this.moreOnSectn(pdctName), "click",
 				"Clicking on : " + moreOnSectn(pdctName).getText());
 		Action.verifyPageUrl(expURL);
-		extentInfoLog("Successfully verified URL!","");
+		extentInfoLog("URL Verified : ", baseURI+expURL);
 		Action.navigateBack();
 	}
 }
