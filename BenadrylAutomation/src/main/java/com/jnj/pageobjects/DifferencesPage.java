@@ -153,7 +153,6 @@ public class DifferencesPage extends BaseClass {
 		Action.explicitWaitForElementTobeclickable(header.getMenuItem(menu), 30);
 		Action.performActionwithExtentInfoLog(header.getMenuItem(menu), "click",
 				"Clicking on : " + header.getMenuItem(menu).getText());
-
 		Action.explicitWait(articleName(heading), 30);
 		boolean eleDisplayed = articleName(heading).isDisplayed();
 		if (eleDisplayed) {

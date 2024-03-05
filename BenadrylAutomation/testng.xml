@@ -4,21 +4,21 @@
 	<listeners>
 		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
-	<test name="HEADER PAGE">
+	
+<!-- 	<test name="HEADER MODULE">
 		<classes>
 			<class name="com.jnj.testcases.HeaderPageTest" />
-
 		</classes>
 	</test>
-	<test name="HOME PAGE">
+	<test name="HOME MODULE">
 		<classes>
 			<class name="com.jnj.testcases.HomePageTest" />
 		</classes>
-	</test>
-
-	<test name="DIFFERENCE PAGE">
+	</test> -->
+	<test name="DIFFERENCE MODULE">
 		<classes>
-			<class name="com.jnj.testcases.DifferencePageTest" />
+			<!-- <class name="com.jnj.testcases.DifferencePageTest" /> -->
+			<class name="com.jnj.testcases.ComparePageTest" />
 		</classes>
 	</test>
 </suite>

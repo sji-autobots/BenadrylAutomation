@@ -14,6 +14,7 @@ import com.jnj.base.BaseClass;
 import com.jnj.dataproviders.DifferenceProvider;
 
 public class DifferencePageTest extends BaseClass {
+
 	@BeforeMethod
 	public void setup() throws InterruptedException {
 		launchApplication();
