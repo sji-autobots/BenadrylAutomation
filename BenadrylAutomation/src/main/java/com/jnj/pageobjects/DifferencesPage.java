@@ -100,8 +100,8 @@ public class DifferencesPage extends BaseClass {
 			extentPassLog("Header displayed : ", true);
 			String head = getHeadings(heading).getText();
 			Action.printAndAssert(head, heading);
-			links(link).click();
-			extentInfoLog("Clicked on : ", link);
+			Action.performActionwithExtentInfoLog(links(link), "click",
+					"Clicking on : " + links(link).getText());
 			Action.verifyPageUrl(expectedUrl);
 		} else
 			extentFailLog("Header displayed : ", false);
@@ -130,8 +130,8 @@ public class DifferencesPage extends BaseClass {
 			String actualArticle = articleName(article).getText();
 			Action.printAndAssert(actualArticle, article);
 			Action.explicitWait(readMoreLink(readMore), 30);
-			readMoreLink(readMore).click();
-			extentInfoLog("Clicked on : ", "READ MORE link");
+			Action.performActionwithExtentInfoLog(readMoreLink(readMore), "click",
+					"Clicking on : " + readMoreLink(readMore).getText());
 			Action.verifyPageUrl(expectedUrl);
 		} else
 			extentFailLog("Related Content header displayed : ", false);
@@ -153,7 +153,6 @@ public class DifferencesPage extends BaseClass {
 		Action.explicitWaitForElementTobeclickable(header.getMenuItem(menu), 30);
 		Action.performActionwithExtentInfoLog(header.getMenuItem(menu), "click",
 				"Clicking on : " + header.getMenuItem(menu).getText());
-
 		Action.explicitWait(articleName(heading), 30);
 		boolean eleDisplayed = articleName(heading).isDisplayed();
 		if (eleDisplayed) {
@@ -161,8 +160,8 @@ public class DifferencesPage extends BaseClass {
 			String actualArticle = articleName(heading).getText();
 			Action.printAndAssert(actualArticle, heading);
 			Action.explicitWait(productName(product), 30);
-			productName(product).click();
-			extentInfoLog("Clicked on : ", product);
+			Action.performActionwithExtentInfoLog(productName(product), "click",
+					"Clicking on : " + productName(product).getText());
 			Action.verifyPageUrl(expectedUrl);
 			Action.navigateBack();
 			extentInfoLog("Navigating back to : ", "Difference page");
@@ -170,8 +169,8 @@ public class DifferencesPage extends BaseClass {
 			String actualAges = getAges(product).getText();
 			Action.printAndAssert(actualAges, expectedAges);
 			Action.explicitWait(buyNowBtn(product), 30);
-			buyNowBtn(product).click();
-			extentInfoLog("Clicked on : ", "buy now button");
+			Action.performActionwithExtentInfoLog(buyNowBtn(product), "click",
+					"Clicking on : " + buyNowBtn(product).getText());
 			Action.waitFor(5000);
 			String actualProduct = productNameOnBuyNow.getText();
 			Action.printAndAssert(actualProduct, expectedProduct);
