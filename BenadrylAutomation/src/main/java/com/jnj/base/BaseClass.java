@@ -22,6 +22,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
 import com.jnj.pageobjects.HeaderPage;
+import com.jnj.pageobjects.HomePage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -36,6 +37,7 @@ public class BaseClass {
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
+	public static HomePage home;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -66,7 +68,8 @@ public class BaseClass {
 		}
 
 		header = new HeaderPage();
-
+		home = new HomePage();
+		
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
 		selectEnv(runOn);
