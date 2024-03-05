@@ -23,6 +23,7 @@ import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
+import com.jnj.pageobjects.HomePage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -37,6 +38,7 @@ public class BaseClass {
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
+	public static HomePage home;
 	public static DifferencesPage difference;
 
 	@BeforeSuite
@@ -68,6 +70,7 @@ public class BaseClass {
 		}
 
 		header = new HeaderPage();
+		home = new HomePage();
 		difference = new DifferencesPage();
 
 		driver.manage().window().maximize();

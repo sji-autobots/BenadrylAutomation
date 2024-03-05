@@ -7,9 +7,16 @@
 	<test name="HEADER PAGE">
 		<classes>
 			<class name="com.jnj.testcases.HeaderPageTest" />
+
 		</classes>
 	</test>
-	<test name="DIFFERENCE">
+	<test name="HOME PAGE">
+		<classes>
+			<class name="com.jnj.testcases.HomePageTest" />
+		</classes>
+	</test>
+
+	<test name="DIFFERENCE PAGE">
 		<classes>
 			<class name="com.jnj.testcases.DifferencePageTest" />
 		</classes>
