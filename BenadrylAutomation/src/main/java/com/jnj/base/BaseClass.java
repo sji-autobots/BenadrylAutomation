@@ -21,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.utility.ExtentManager;
 
@@ -36,6 +37,7 @@ public class BaseClass {
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
+	public static DifferencesPage difference;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -66,6 +68,7 @@ public class BaseClass {
 		}
 
 		header = new HeaderPage();
+		difference = new DifferencesPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
