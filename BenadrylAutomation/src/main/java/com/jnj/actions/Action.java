@@ -992,14 +992,21 @@ public class Action extends BaseClass {
 	public static void navigateForward() {
 		driver.navigate().forward();
 	}
-	
+
 	/**
 	 * Function to verify page url
+	 * 
 	 * @param partialUrl pass partial url to verify
 	 */
 	public static void verifyPageUrl(String partialUrl) {
 		String currentUrl = driver.getCurrentUrl().trim();
 		String expectedUrl = baseURI + partialUrl;
 		Assert.assertEquals(currentUrl, expectedUrl);
+		BaseClass.extentInfoLog("Verified current URL to be : " + currentUrl);
 	}
+	
+	public static void hoverOverElement(WebDriver driver, WebElement element) throws InterruptedException {
+		  Actions action = new Actions(driver);
+		  action.moveToElement(element).perform();
+		}
 }
