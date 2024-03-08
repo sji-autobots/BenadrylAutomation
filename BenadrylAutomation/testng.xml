@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Benadryl - Regression Suite Testcases">
 	<listeners>
-		<listener class-name="com.jnj.utility.CustomListener">
-		</listener>
+		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
-	<test thread-count="5" name="Test">
+ 	<test name="HEADER PAGE">
 		<classes>
 			<class name="com.jnj.testcases.HeaderPageTest" />
+
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+	<test name="HOME PAGE">
+		<classes>
+			<class name="com.jnj.testcases.HomePageTest" />
+		</classes>
+	</test>
+
+	<test name="DIFFERENCE PAGE">
+		<classes>
+			<class name="com.jnj.testcases.DifferencePageTest" />
+		</classes>
+	</test>
+</suite>

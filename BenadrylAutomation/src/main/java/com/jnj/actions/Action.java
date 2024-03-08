@@ -63,6 +63,18 @@ public class Action extends BaseClass {
 		Actions act = new Actions(driver);
 		act.sendKeys(Keys.ESCAPE).perform();
 	}
+	
+    /**
+     * Function to log and assert the actual and expected values
+     *
+     * @param actualResult   String representing the actual result
+     * @param expectedResult String representing the expected result
+     */
+    public static void printAndAssert(Object actualResult, Object expectedResult) {
+        extentInfoLog("Asserting actual result : ", actualResult);
+        extentInfoLog("Expected Result : ", expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
 	public static boolean sendKeys(WebElement ele, String text) {
 		boolean flag = false;
@@ -1000,7 +1012,9 @@ public class Action extends BaseClass {
 	 */
 	public static void verifyPageUrl(String partialUrl) {
 		String currentUrl = driver.getCurrentUrl().trim();
+        extentInfoLog("Asserting current URL : ", currentUrl);
 		String expectedUrl = baseURI + partialUrl;
+		extentInfoLog("Expected URL : ", expectedUrl);
 		Assert.assertEquals(currentUrl, expectedUrl);
 		BaseClass.extentInfoLog("Verified current URL to be : " + currentUrl);
 	}
