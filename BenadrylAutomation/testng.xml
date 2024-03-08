@@ -8,6 +8,7 @@
 	<test name="HEADER MODULE">
 		<classes>
 			<class name="com.jnj.testcases.HeaderPageTest" />
+			<class name="com.jnj.testcases.SignUpPageTest" />
 		</classes>
 	</test>
 	<test name="HOME MODULE">

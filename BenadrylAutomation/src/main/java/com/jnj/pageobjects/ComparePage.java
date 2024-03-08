@@ -112,6 +112,7 @@ public class ComparePage extends BaseClass {
 		return driver.findElement(By.xpath("//td[text()='" + medication + "']/following-sibling::td[5]"));
 	}
 
+	//---------should come from header module
 	public void navigateToSubMenu(String menu, String subMenu) {
 		Action.explicitWaitForElementTobeclickable(this.getMenuItem(menu), 30);
 		Action.mouseOverElement(driver, this.getMenuItem(menu));
@@ -120,6 +121,13 @@ public class ComparePage extends BaseClass {
 				"Clicked on : " + getSubMenuItem(menu, subMenu).getText());
 	}
 
+	/**
+	 * Function to verify url and banner title
+	 * 
+	 * @param expectedUrl         pass expected URL
+	 * @param expectedTitle       pass expected title
+	 * @param expectedDescription pass expected description
+	 */
 	public void verifyUrlAndTitle(String expectedUrl, String expectedTitle, String expectedDescription) {
 		Action.verifyPageUrl(expectedUrl);
 		String actualBannerTitle = bannerTitle.getText();
@@ -128,6 +136,13 @@ public class ComparePage extends BaseClass {
 		Action.printAndAssert(actualBannerDescription, expectedDescription);
 	}
 
+	/**
+	 * Function to verify header and followed links
+	 * 
+	 * @param heading     pass heading
+	 * @param link        pass link
+	 * @param expectedUrl pass expected URL
+	 */
 	public void verifyHeadingAndLinks(String heading, String link, String expectedUrl) {
 		String actualHeading = getHeadings(heading).getText();
 		Action.printAndAssert(actualHeading, heading);
@@ -136,6 +151,17 @@ public class ComparePage extends BaseClass {
 		Action.verifyPageUrl(expectedUrl);
 	}
 
+	/**
+	 * Function to verify medications
+	 * 
+	 * @param heading    pass heading
+	 * @param medication pass medication
+	 * @param benadryl   pass benadryl
+	 * @param claritin   pass claritin
+	 * @param allegra    pass allegra
+	 * @param zyrtec     pass zyrtec
+	 * @param xyzal      pass xyzal
+	 */
 	public void verifyMedication(String heading, String medication, String benadryl, String claritin, String allegra,
 			String zyrtec, String xyzal) {
 		Action.explicitWait(getHeadings(heading), 30);
@@ -160,6 +186,15 @@ public class ComparePage extends BaseClass {
 			extentFailLog("Header displayed : ", false);
 	}
 
+	/**
+	 * Function to verify url from related products
+	 * 
+	 * @param heading         pass heading
+	 * @param product         pass product
+	 * @param expectedUrl     pass expected Url
+	 * @param expectedAges    pass expected Ages
+	 * @param expectedProduct pass expected product
+	 */
 	public void verifyRelatedProducts(String heading, String product, String expectedUrl, String expectedAges,
 			String expectedProduct) {
 		Action.explicitWait(getSpanHeadings(heading), 30);
@@ -187,6 +222,14 @@ public class ComparePage extends BaseClass {
 			extentFailLog("Related Products header displayed : ", false);
 	}
 
+	/**
+	 * Function to verify url from articles
+	 * 
+	 * @param heading     pass heading
+	 * @param article     pass article
+	 * @param readMore    pass read more
+	 * @param expectedUrl pass expected Url
+	 */
 	public void verifyArticles(String heading, String article, String readMore, String expectedUrl) {
 		Action.explicitWait(getSpanHeadings(heading), 30);
 		boolean eleDisplayed = getSpanHeadings(heading).isDisplayed();
@@ -205,6 +248,14 @@ public class ComparePage extends BaseClass {
 			extentFailLog("Related Content header displayed : ", false);
 	}
 
+	/**
+	 * Function to verify url from references
+	 * 
+	 * @param heading     pass heading
+	 * @param refText     pass reference Text
+	 * @param link        pass expected link
+	 * @param expectedUrl pass expected Url
+	 */
 	public void verifyReferences(String heading, String refText, String link, String expectedUrl) {
 		String actualHeading = getHeadings(heading).getText();
 		Action.printAndAssert(actualHeading, heading);
