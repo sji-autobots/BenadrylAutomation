@@ -25,51 +25,60 @@ public class HeaderPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			header.verifyMainMenuLink(menu, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 2, dataProvider = "headerSubMenu", dataProviderClass = HeaderProvider.class)
-	public void HEADER_verifySubMenuLink(String testcase, String execution, String menu, String subMenu, String expectedUrl) throws InterruptedException {
+	public void HEADER_verifySubMenuLink(String testcase, String execution, String menu, String subMenu,
+			String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
 			Action.verifyPageUrl(expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 3, dataProvider = "whereToBuy", dataProviderClass = HeaderProvider.class)
-	public void HEADER_verifyWhereToBuyLink(String testcase, String execution, String expectedUrl) throws InterruptedException {
+	public void HEADER_verifyWhereToBuyLink(String testcase, String execution, String expectedUrl)
+			throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			header.verifyWhereToBuyLink(expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 4, dataProvider = "language", dataProviderClass = HeaderProvider.class)
-	public void HEADER_verifyLanguageLink(String testcase, String execution,String locale, String expectedUrl) throws InterruptedException {
+	public void HEADER_verifyLanguageLink(String testcase, String execution, String locale, String expectedUrl)
+			throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			header.changeLanguageTo(locale, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
-	@Test(priority = 5,dataProvider = "search", dataProviderClass = HeaderProvider.class)
-	public void HEADER_search(String testcase, String execution,String criteria, String expectedUrl) throws InterruptedException {
+
+	@Test(priority = 5, dataProvider = "search", dataProviderClass = HeaderProvider.class)
+	public void HEADER_search(String testcase, String execution, String criteria, String expectedUrl)
+			throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			header.initiateSearch(criteria);
 			Action.verifyPageUrl(expectedUrl);
 		} else {

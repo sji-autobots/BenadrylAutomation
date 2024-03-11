@@ -87,8 +87,8 @@ public class HeaderPage extends BaseClass {
 	/**
 	 * Function to verify sub menu links
 	 * 
-	 * @param menu        pass menu option
-	 * @param subMenu     pass sub menu text
+	 * @param menu    pass menu option
+	 * @param subMenu pass sub menu text
 	 * @throws InterruptedException
 	 */
 	public void navigateSubMenuLink(String menu, String subMenu) throws InterruptedException {
