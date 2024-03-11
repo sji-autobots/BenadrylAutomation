@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
@@ -61,15 +62,13 @@ public class SignUpPage extends BaseClass {
 
 	// --------- this should come from header page
 	public void clickOnEmailSignUp() {
-		home.closePrivacyPopup();
-		Action.explicitWaitForElementTobeclickable(emailSignUpRewardLink, 30);
-		boolean eleDisplayed = emailSignUpRewardLink.isDisplayed();
-		if (eleDisplayed) {
-			extentPassLog("Email Signup & Reward link displayed : ", true);
+		try {
+			Action.explicitWaitForElementTobeclickable(emailSignUpRewardLink, 30);
 			Action.performActionwithExtentInfoLog(emailSignUpRewardLink, "click",
 					"Clicking on : " + emailSignUpRewardLink.getText());
-		} else
-			extentFailLog("Email Signup & Reward link displayed : ", false);
+		} catch (Exception e) {
+			Assert.fail("Email Signup & Reward link not displayed");
+		}
 	}
 
 	/**
@@ -78,15 +77,15 @@ public class SignUpPage extends BaseClass {
 	 * @param expectedTitle pass expected title
 	 */
 	public void verifyLogoAndTitle(String expectedTitle) {
-		Action.explicitWait(logo, 30);
-		boolean eleDisplayed = logo.isDisplayed();
-		if (eleDisplayed) {
-			extentPassLog("Logo displayed : ", true);
+		try {
+			Action.explicitWait(logo, 30);
 			String actualTitle = signUpTitle.getText();
 			Action.printAndAssert(actualTitle, expectedTitle);
 			Action.performActionwithExtentInfoLog(closeBtn, "click", "Clicking on : Close button");
-		} else
-			extentFailLog("Logo displayed : ", false);
+		} catch (Exception e) {
+			Assert.fail("Logo not displayed");
+		}
+
 	}
 
 	/**
@@ -102,40 +101,35 @@ public class SignUpPage extends BaseClass {
 
 	public void EnterNameAndEmail(String fnameValue, String fname, String emailValue, String email, String key,
 			String validation) {
-		Action.explicitWaitForElementTobeclickable(enterInputs(fnameValue), 30);
-		boolean eleFirstNameDisplayed = enterInputs(fnameValue).isDisplayed();
-		if (eleFirstNameDisplayed) {
-			extentPassLog("First name input displayed : ", true);
+		try {
+			Action.explicitWaitForElementTobeclickable(enterInputs(fnameValue), 30);
 			enterInputs(fnameValue).sendKeys(fname);
 			extentInfoLog("Entered first name : ", fname);
 			Action.explicitWaitForElementTobeclickable(enterInputs(emailValue), 30);
-			boolean eleLastNameDisplayed = enterInputs(emailValue).isDisplayed();
-			if (eleLastNameDisplayed) {
-				extentPassLog("Last name input displayed : ", true);
-				enterInputs(emailValue).sendKeys(email);
-				extentInfoLog("Entered email : ", email);
-				Action.explicitWaitForElementTobeclickable(submitBtn, 30);
-				Action.performActionwithExtentInfoLog(submitBtn, "click", "Clicking on : " + submitBtn.getText());
-				Action.waitFor(3000);
-				switch (key) {
-				case "First name":
-					Action.explicitWait(getValidations(fnameValue), 30);
-					String fnameValidationMessage = getValidations(fnameValue).getText();
-					Action.printAndAssert(validation, fnameValidationMessage);
-					break;
-				case "Email":
-					Action.explicitWait(getValidations(emailValue), 30);
-					String emailValidationMessage = getValidations(emailValue).getText();
-					Action.printAndAssert(validation, emailValidationMessage);
-					break;
-				default:
-					extentInfoLog("Key not matching with ", "validation message");
-					break;
-				}
-			} else
-				extentFailLog("Last name input displayed : ", false);
-		} else
-			extentFailLog("First name input displayed : ", false);
+			enterInputs(emailValue).sendKeys(email);
+			extentInfoLog("Entered email : ", email);
+			Action.explicitWaitForElementTobeclickable(submitBtn, 30);
+			Action.performActionwithExtentInfoLog(submitBtn, "click", "Clicking on : " + submitBtn.getText());
+			Action.waitFor(3000);
+			switch (key) {
+			case "First name":
+				Action.explicitWait(getValidations(fnameValue), 30);
+				String fnameValidationMessage = getValidations(fnameValue).getText();
+				Action.printAndAssert(validation, fnameValidationMessage);
+				break;
+			case "Email":
+				Action.explicitWait(getValidations(emailValue), 30);
+				String emailValidationMessage = getValidations(emailValue).getText();
+				Action.printAndAssert(validation, emailValidationMessage);
+				break;
+			default:
+				extentInfoLog("Key not matching with ", "validation message");
+				break;
+			}
+		} catch (Exception e) {
+			Assert.fail("Input fields not displayed");
+		}
+
 	}
 
 	/**
@@ -145,34 +139,38 @@ public class SignUpPage extends BaseClass {
 	 * @param expectedUrl pass expected Url
 	 */
 	public void checkLinks(String key, String expectedUrl) {
-		switch (key) {
-		case "Privacy":
-			Action.explicitWaitForElementTobeclickable(privacyPolicyLink, 30);
-			boolean elePrivacyDisplayed = privacyPolicyLink.isDisplayed();
-			if (elePrivacyDisplayed) {
-				extentPassLog("Privacy link displayed : ", true);
-				Action.performActionwithExtentInfoLog(privacyPolicyLink, "click",
-						"Clicking on : " + privacyPolicyLink.getText());
-				Action.switchToNewWindow(driver);
-				String actualUrl = driver.getCurrentUrl();
-				String baseUrl = actualUrl.substring(0, actualUrl.indexOf("?"));
-				Action.printAndAssert(baseUrl, expectedUrl);
-			} else
-				extentFailLog("Privacy link displayed : ", false);
-			break;
-		case "Financial":
-			Action.explicitWaitForElementTobeclickable(privacyPolicyLink, 30);
-			boolean eleFinancialDisplayed = privacyPolicyLink.isDisplayed();
-			if (eleFinancialDisplayed) {
-				extentPassLog("Financial incentive link displayed : ", true);
-				Action.performActionwithExtentInfoLog(financialIncentiveNoticeLink, "click",
-						"Clicking on : " + financialIncentiveNoticeLink.getText());
-				Action.switchToNewWindow(driver);
-				String actualUrl = driver.getCurrentUrl();
-				Action.printAndAssert(actualUrl, expectedUrl);
-			} else
-				extentFailLog("Financial incentive link displayed : ", false);
-			break;
+		try {
+			switch (key) {
+			case "Privacy":
+				Action.explicitWaitForElementTobeclickable(privacyPolicyLink, 30);
+				boolean elePrivacyDisplayed = privacyPolicyLink.isDisplayed();
+				if (elePrivacyDisplayed) {
+					extentPassLog("Privacy link displayed : ", true);
+					Action.performActionwithExtentInfoLog(privacyPolicyLink, "click",
+							"Clicking on : " + privacyPolicyLink.getText());
+					Action.switchToNewWindow(driver);
+					String actualUrl = driver.getCurrentUrl();
+					String baseUrl = actualUrl.substring(0, actualUrl.indexOf("?"));
+					Action.printAndAssert(baseUrl, expectedUrl);
+				} else
+					extentFailLog("Privacy link displayed : ", false);
+				break;
+			case "Financial":
+				Action.explicitWaitForElementTobeclickable(privacyPolicyLink, 30);
+				boolean eleFinancialDisplayed = privacyPolicyLink.isDisplayed();
+				if (eleFinancialDisplayed) {
+					extentPassLog("Financial incentive link displayed : ", true);
+					Action.performActionwithExtentInfoLog(financialIncentiveNoticeLink, "click",
+							"Clicking on : " + financialIncentiveNoticeLink.getText());
+					Action.switchToNewWindow(driver);
+					String actualUrl = driver.getCurrentUrl();
+					Action.printAndAssert(actualUrl, expectedUrl);
+				} else
+					extentFailLog("Financial incentive link displayed : ", false);
+				break;
+			}
+		} catch (Exception e) {
+			Assert.fail("Link not displayed");
 		}
 	}
 }

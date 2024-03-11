@@ -25,6 +25,7 @@ public class SignUpPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			signup.clickOnEmailSignUp();
 			signup.verifyLogoAndTitle(expectedTitle);
 		} else {
@@ -38,6 +39,7 @@ public class SignUpPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			signup.clickOnEmailSignUp();
 			signup.EnterNameAndEmail(fnameValue, fname, emailValue, email, key, expectedResult);
 		} else {
@@ -50,6 +52,7 @@ public class SignUpPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			signup.clickOnEmailSignUp();
 			signup.checkLinks(key, expectedUrl);
 

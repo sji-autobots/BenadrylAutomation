@@ -26,6 +26,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyUrlAndTitle(expectedUrl, expectedTitle, expectedDescription);
 		} else {
@@ -39,6 +40,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyHeadingAndLinks(heading, link, expectedUrl);
 		} else {
@@ -52,6 +54,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyMedication(header, medication, benadryl, claritin, allegra, zyrtec, xyzal);
 		} else {
@@ -65,6 +68,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyRelatedProducts(header, product, expectedUrl, ages, expectedProductName);
 		} else {
@@ -78,6 +82,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyArticles(header, title, readMore, expectedUrl);
 		} else {
@@ -91,6 +96,7 @@ public class ComparePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			compare.navigateToSubMenu(menu, subMenu);
 			compare.verifyReferences(heading, refText, link, expectedUrl);
 		} else {
