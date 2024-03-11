@@ -23,6 +23,7 @@ public class HomePageTest extends BaseClass {
 	public void HOME_verifyBanner(String testcase, String execution, String expectedHeading, String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.verifyHomeBanner(expectedHeading, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -34,6 +35,7 @@ public class HomePageTest extends BaseClass {
 			String expectedUrl, String productName, String pdctURL) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.verifyOurProducts(index, expectedHeading, expectedUrl, productName, pdctURL);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -44,6 +46,7 @@ public class HomePageTest extends BaseClass {
 	public void HOME_verifyBestSeller(String testcase, String execution, String expectedHeading) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.verifyBestSeller(expectedHeading);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -55,6 +58,7 @@ public class HomePageTest extends BaseClass {
 			String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.verifyRelatedContent(expectedHeading, index, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -66,6 +70,7 @@ public class HomePageTest extends BaseClass {
 			String sectionBtn, String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.verifyAllergySection(sectionName, expectedHeading, sectionBtn, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -77,6 +82,7 @@ public class HomePageTest extends BaseClass {
 			String expURL) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			home.moreOnSection(expHeading, pdctName, expURL);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);

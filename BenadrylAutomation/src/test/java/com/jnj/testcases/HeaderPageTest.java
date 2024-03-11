@@ -1,6 +1,6 @@
 /**
  * @author Goutam Naik
- * @date 07-March-24
+ * @date 27-Feb-24
  */
 
 package com.jnj.testcases;
@@ -20,7 +20,7 @@ public class HeaderPageTest extends BaseClass {
 		launchApplication();
 	}
 
-	@Test(priority = 1, dataProvider = "headerMainMenu", dataProviderClass = HeaderProvider.class, enabled = true, groups = "HeaderPage")
+	@Test(priority = 1, dataProvider = "headerMainMenu", dataProviderClass = HeaderProvider.class)
 	public void HEADER_verifyMainMenuLink(String testcase, String execution, String menu, String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -31,7 +31,7 @@ public class HeaderPageTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 2, dataProvider = "headerSubMenu", dataProviderClass = HeaderProvider.class, enabled = true, groups = "HeaderPage")
+	@Test(priority = 2, dataProvider = "headerSubMenu", dataProviderClass = HeaderProvider.class)
 	public void HEADER_verifySubMenuLink(String testcase, String execution, String menu, String subMenu, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -43,7 +43,7 @@ public class HeaderPageTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 3, dataProvider = "whereToBuy", dataProviderClass = HeaderProvider.class, enabled = true)
+	@Test(priority = 3, dataProvider = "whereToBuy", dataProviderClass = HeaderProvider.class)
 	public void HEADER_verifyWhereToBuyLink(String testcase, String execution, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -54,7 +54,7 @@ public class HeaderPageTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 4, dataProvider = "language", dataProviderClass = HeaderProvider.class, enabled = true)
+	@Test(priority = 4, dataProvider = "language", dataProviderClass = HeaderProvider.class)
 	public void HEADER_verifyLanguageLink(String testcase, String execution,String locale, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -65,7 +65,7 @@ public class HeaderPageTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 5,dataProvider = "search", dataProviderClass = HeaderProvider.class, enabled = true)
+	@Test(priority = 5,dataProvider = "search", dataProviderClass = HeaderProvider.class)
 	public void HEADER_search(String testcase, String execution,String criteria, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {

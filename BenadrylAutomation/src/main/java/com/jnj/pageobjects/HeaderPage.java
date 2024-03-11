@@ -1,6 +1,6 @@
 /**
  * @author Goutam Naik
- * @date 07-March-24
+ * @date 27-Feb-24
  */
 
 package com.jnj.pageobjects;
@@ -89,7 +89,6 @@ public class HeaderPage extends BaseClass {
 	 * 
 	 * @param menu        pass menu option
 	 * @param subMenu     pass sub menu text
-	 * @param expectedUrl pass expected url
 	 * @throws InterruptedException
 	 */
 	public void navigateSubMenuLink(String menu, String subMenu) throws InterruptedException {

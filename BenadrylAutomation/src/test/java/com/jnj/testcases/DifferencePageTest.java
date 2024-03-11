@@ -24,6 +24,7 @@ public class DifferencePageTest extends BaseClass {
 			String expectedTitle) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			difference.verifyUrlAndTitle(menu, expectedUrl, expectedTitle);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -35,6 +36,7 @@ public class DifferencePageTest extends BaseClass {
 			String link, String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			difference.verifyHeadingsAndLinks(menu, heading, link, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -46,6 +48,7 @@ public class DifferencePageTest extends BaseClass {
 			String title, String readMore, String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			difference.verifyArticles(menu, header, title, readMore, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -57,6 +60,7 @@ public class DifferencePageTest extends BaseClass {
 			String product, String expectedUrl, String ages, String expectedProductNmae) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
 			difference.verifyRelatedProducts(menu, header, product, expectedUrl, ages, expectedProductNmae);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);

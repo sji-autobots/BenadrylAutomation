@@ -63,18 +63,18 @@ public class Action extends BaseClass {
 		Actions act = new Actions(driver);
 		act.sendKeys(Keys.ESCAPE).perform();
 	}
-	
-    /**
-     * Function to log and assert the actual and expected values
-     *
-     * @param actualResult   String representing the actual result
-     * @param expectedResult String representing the expected result
-     */
-    public static void printAndAssert(Object actualResult, Object expectedResult) {
-        extentInfoLog("Asserting actual result : ", actualResult);
-        extentInfoLog("Expected Result : ", expectedResult);
-        Assert.assertEquals(actualResult, expectedResult);
-    }
+
+	/**
+	 * Function to log and assert the actual and expected values
+	 *
+	 * @param actualResult   String representing the actual result
+	 * @param expectedResult String representing the expected result
+	 */
+	public static void printAndAssert(Object actualResult, Object expectedResult) {
+		extentInfoLog("Asserting actual result : ", actualResult);
+		extentInfoLog("Expected Result : ", expectedResult);
+		Assert.assertEquals(actualResult, expectedResult);
+	}
 
 	public static boolean sendKeys(WebElement ele, String text) {
 		boolean flag = false;
@@ -1012,15 +1012,22 @@ public class Action extends BaseClass {
 	 */
 	public static void verifyPageUrl(String partialUrl) {
 		String currentUrl = driver.getCurrentUrl().trim();
-        extentInfoLog("Asserting current URL : ", currentUrl);
+		extentInfoLog("Asserting current URL : ", currentUrl);
 		String expectedUrl = baseURI + partialUrl;
 		extentInfoLog("Expected URL : ", expectedUrl);
 		Assert.assertEquals(currentUrl, expectedUrl);
 		BaseClass.extentInfoLog("Verified current URL to be : " + currentUrl);
 	}
-	
+
+	/**
+	 * Function to hover over element using actions class
+	 * 
+	 * @param driver  pass driver object
+	 * @param element pass webelement to hover over
+	 * @throws InterruptedException
+	 */
 	public static void hoverOverElement(WebDriver driver, WebElement element) throws InterruptedException {
-		  Actions action = new Actions(driver);
-		  action.moveToElement(element).perform();
-		}
+		Actions action = new Actions(driver);
+		action.moveToElement(element).perform();
+	}
 }
