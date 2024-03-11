@@ -26,7 +26,7 @@ public class SignUpPageTest extends BaseClass {
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
-			signup.clickOnEmailSignUp();
+			header.clickOnEmailSignUp();
 			signup.verifyLogoAndTitle(expectedTitle);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -40,7 +40,7 @@ public class SignUpPageTest extends BaseClass {
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
-			signup.clickOnEmailSignUp();
+			header.clickOnEmailSignUp();
 			signup.EnterNameAndEmail(fnameValue, fname, emailValue, email, key, expectedResult);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -53,7 +53,7 @@ public class SignUpPageTest extends BaseClass {
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
-			signup.clickOnEmailSignUp();
+			header.clickOnEmailSignUp();
 			signup.checkLinks(key, expectedUrl);
 
 		} else {

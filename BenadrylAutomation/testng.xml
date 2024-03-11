@@ -5,18 +5,18 @@
 		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
 
-	<test name="HEADER MODULE">
+ 	<test name="HEADER PAGE">
 		<classes>
 			<class name="com.jnj.testcases.HeaderPageTest" />
 			<class name="com.jnj.testcases.SignUpPageTest" />
 		</classes>
 	</test>
-	<test name="HOME MODULE">
+	<test name="HOME PAGE">
 		<classes>
 			<class name="com.jnj.testcases.HomePageTest" />
 		</classes>
 	</test>
-	<test name="DIFFERENCE MODULE">
+	<test name="DIFFERENCE PAGE">
 		<classes>
 			<class name="com.jnj.testcases.DifferencePageTest" />
 			<class name="com.jnj.testcases.ComparePageTest" />

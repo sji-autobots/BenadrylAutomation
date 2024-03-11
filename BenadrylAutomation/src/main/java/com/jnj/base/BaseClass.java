@@ -65,7 +65,6 @@ public class BaseClass {
 		String browserName = prop.getProperty("browserName");
 		runOn = prop.getProperty("runOn");
 		String headlessChrome = prop.getProperty("headlessChrome");
-
 		if (browserName.contains("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			if (headlessChrome.equals("yes")) {

@@ -30,9 +30,6 @@ public class SignUpPage extends BaseClass {
 	/**
 	 * Locators
 	 */
-	@FindBy(xpath = "(//a[normalize-space()='Email Sign Up & Rewards'])[1]")
-	WebElement emailSignUpRewardLink;
-
 	@FindBy(xpath = "//div[@class='sfmc-careclub-logo']")
 	WebElement logo;
 
@@ -58,17 +55,6 @@ public class SignUpPage extends BaseClass {
 	private WebElement getValidations(String value) {
 		return driver
 				.findElement(By.xpath("//input[@id='edit-sfmc-" + value + "']/../div[@class='sfmc-careclub-error']"));
-	}
-
-	// --------- this should come from header page
-	public void clickOnEmailSignUp() {
-		try {
-			Action.explicitWaitForElementTobeclickable(emailSignUpRewardLink, 30);
-			Action.performActionwithExtentInfoLog(emailSignUpRewardLink, "click",
-					"Clicking on : " + emailSignUpRewardLink.getText());
-		} catch (Exception e) {
-			Assert.fail("Email Signup & Reward link not displayed");
-		}
 	}
 
 	/**

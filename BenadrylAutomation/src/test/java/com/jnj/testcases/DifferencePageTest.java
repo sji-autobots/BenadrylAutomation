@@ -26,6 +26,7 @@ public class DifferencePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			difference.verifyUrlAndTitle(menu, expectedUrl, expectedTitle);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -38,6 +39,7 @@ public class DifferencePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			difference.verifyHeadingsAndLinks(menu, heading, link, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -50,6 +52,7 @@ public class DifferencePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			difference.verifyArticles(menu, header, title, readMore, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -62,6 +65,7 @@ public class DifferencePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			difference.verifyRelatedProducts(menu, header, product, expectedUrl, ages, expectedProductName);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);

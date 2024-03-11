@@ -37,15 +37,6 @@ public class ComparePage extends BaseClass {
 	@FindBy(xpath = "(//div[@class='ps-product-details']/h2)[1]")
 	WebElement productNameOnBuyNow;
 
-	private WebElement getMenuItem(String menu) {
-		return driver.findElement(By.xpath("//ul[@role='menubar']/li/*[text()='" + menu + "']"));
-	}
-
-	private WebElement getSubMenuItem(String menu, String subMenu) {
-		return driver.findElement(By.xpath("//*[text()='" + menu + "']/following-sibling::ul/li/*[text()=\"" + subMenu
-				+ "\"] [@role='menuitem']"));
-	}
-
 	private WebElement getHeadings(String value) {
 		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
 	}
@@ -110,15 +101,6 @@ public class ComparePage extends BaseClass {
 
 	private WebElement getXyzalBrandValue(String medication) {
 		return driver.findElement(By.xpath("//td[text()='" + medication + "']/following-sibling::td[5]"));
-	}
-
-	//---------should come from header module
-	public void navigateToSubMenu(String menu, String subMenu) {
-		Action.explicitWaitForElementTobeclickable(this.getMenuItem(menu), 30);
-		Action.mouseOverElement(driver, this.getMenuItem(menu));
-		Action.explicitWaitForElementTobeclickable(getSubMenuItem(menu, subMenu), 30);
-		Action.performActionwithExtentInfoLog(getSubMenuItem(menu, subMenu), "click",
-				"Clicked on : " + getSubMenuItem(menu, subMenu).getText());
 	}
 
 	/**

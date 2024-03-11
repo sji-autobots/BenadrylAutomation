@@ -24,6 +24,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.verifyHomeBanner(expectedHeading, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -36,6 +37,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.verifyOurProducts(index, expectedHeading, expectedUrl, productName, pdctURL);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -47,6 +49,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.verifyBestSeller(expectedHeading);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -59,6 +62,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.verifyRelatedContent(expectedHeading, index, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -71,6 +75,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.verifyAllergySection(sectionName, expectedHeading, sectionBtn, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -83,6 +88,7 @@ public class HomePageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
 			home.moreOnSection(expHeading, pdctName, expURL);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
