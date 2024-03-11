@@ -35,6 +35,7 @@ public class BaseClass {
 	public static ExtentTest test;
 	public String defaultFlag = "Yes";
 	public static String baseURI;
+	public static String runOn;
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
@@ -58,7 +59,7 @@ public class BaseClass {
 
 	public static void launchApplication() {
 		String browserName = prop.getProperty("browserName");
-		String runOn = prop.getProperty("runOn");
+		runOn = prop.getProperty("runOn");
 		if (browserName.contains("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
@@ -75,7 +76,6 @@ public class BaseClass {
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
-		selectEnv(runOn);
 	}
 
 	public static void extentMarkupLog(Markup markup) {
