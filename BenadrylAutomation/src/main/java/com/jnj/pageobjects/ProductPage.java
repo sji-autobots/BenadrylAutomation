@@ -32,7 +32,7 @@ public class ProductPage extends BaseClass{
     @FindBy(css = "#tab-menu-8651")
     WebElement prodHeaderMenu;
 
-    @FindBy(css = "#node-title-url-386")
+    @FindBy(css = "[itemprop=\"name\"] > #node-title-url-386")
     WebElement prodTileTitle;
 
     @FindBy(css = "[alt=\"BENADRYL® Allergy ULTRATABS® Tablets\"]")
@@ -50,19 +50,67 @@ public class ProductPage extends BaseClass{
     @FindBy(css = ".bv_war_button")
     WebElement writeAReviewBtn;
 
+    @FindBy(css = ".zZXQY")
+    WebElement writeAReviewModal;
+
     @FindBy(css = "#mini-panel-product_header .ps-button-label")
     WebElement buyNowBtn;
+
+    @FindBy(css = ".ps-wtb")
+    WebElement buyNowModal;
+
+    @FindBy(css = ".jump-to-title")
+    WebElement jumpToTitle;
+
+    @FindBy(css = "[href=\"#product-overview\"] > h2")
+    WebElement prodOverviewHeading;
+
+    @FindBy(css = ".pane-node-field-product-directions")
+    WebElement directionSection;
+
+    @FindBy(css = ".pane-node-field-product-directions h2")
+    WebElement directionHeading;
+
+    @FindBy(css = "#mini-panel-product_ingredients_modal")
+    WebElement ingredientsSection;
+
+    @FindBy(css = "#mini-panel-product_ingredients_modal h2")
+    WebElement ingredientsHeading;
+
+    @FindBy(css = "li #used-for")
+    WebElement usedForSection;
+
+    @FindBy(css = "#tab_used-for")
+    WebElement usedForHeading;
+
+    @FindBy(css = "li #warnings")
+    WebElement warningsSection;
+
+    @FindBy(css = "#tab_warnings")
+    WebElement warningsHeading;
+
+    @FindBy(css = "#mini-panel-product_faq")
+    WebElement faqsSection;
+
+    @FindBy(css = "#mini-panel-product_faq span")
+    WebElement faqsHeading;
+
+    @FindBy(css = "#bv_review_maincontainer")
+    WebElement reviewsSection;
+
+    @FindBy(css = "#bv_review_maincontainer h2")
+    WebElement reviewsHeading;
     
-    public WebElement getJumpToHeadings(String itemText) {
-        return driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + itemText + "']"));
+    public WebElement getJumpToHeadings(String headingText) {
+        return driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
     }
 
     /**
      * Visits a product page from the homepage.
      */
     public void visitPDP() {
-        Action.performActionwithExtentInfoLog(this.prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());    
-        Action.performActionwithExtentInfoLog(this.prodTileTitle, "click", "Clicking on : " + prodTileTitle.getText()); 	
+        Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());    
+        Action.performActionwithExtentInfoLog(prodTileTitle, "click", "Clicking on : " + prodTileTitle.getText()); 	
     }
 
     /**
@@ -110,10 +158,11 @@ public class ProductPage extends BaseClass{
      */
     public void verifyWriteAReviewBtn(String expectedText) {
     	this.visitPDP();
-        extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, prodTitle));
+        extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, writeAReviewBtn));
 		String actualText= writeAReviewBtn.getText();
         Assert.assertEquals(actualText, expectedText);
-		Action.performActionwithExtentInfoLog(this.writeAReviewBtn, "click", "Clicking on : " + actualText);
+		Action.performActionwithExtentInfoLog(writeAReviewBtn, "click", "Clicking on : " + actualText);
+        extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, writeAReviewModal));
         extentInfoLog("Write a Review button verified");
     }
 
@@ -123,10 +172,123 @@ public class ProductPage extends BaseClass{
      */
     public void verifyBuyNowBtn(String expectedText) {
     	this.visitPDP();
-        extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, prodTitle));
+        extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, buyNowBtn));
 		String actualText = buyNowBtn.getText();
         Assert.assertEquals(actualText, expectedText);
-		Action.performActionwithExtentInfoLog(this.buyNowBtn, "click", "Clicking on : " + actualText);
-        extentInfoLog("But Now button verified");
+		Action.performActionwithExtentInfoLog(buyNowBtn, "click", "Clicking on : " + actualText);
+        extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, buyNowModal));
+        extentInfoLog("Buy Now button verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToOverview(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = prodOverviewHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, prodOverview));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToDirections(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = directionHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, directionSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToIngredients(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = ingredientsHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, ingredientsSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToUsedFor(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = usedForHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, usedForSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToWarnings(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = warningsHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, warningsSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToFAQs(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = faqsHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, faqsSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the jump to heading.
+     */
+    public void verifyJumpToReview(String jumpToHeading, String sectionHeading) {
+    	this.visitPDP();
+		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
+		String jumpToHeadingText = jumpToHead.getText();
+		String actualHeadingText = reviewsHeading.getText();
+    	Action.scrollUntilElementVisible(jumpToTitle);
+		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
+        extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, reviewsSection));
+        Assert.assertEquals(actualHeadingText, sectionHeading);
+        extentInfoLog(jumpToHeadingText + "jump heading verified");
     }
 }
