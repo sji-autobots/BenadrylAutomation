@@ -21,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.BenadrylUsesPage;
 import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
@@ -45,6 +46,7 @@ public class BaseClass {
 	public static DifferencesPage difference;
 	public static ComparePage compare;
 	public static SignUpPage signup;
+	public static BenadrylUsesPage uses;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -83,6 +85,7 @@ public class BaseClass {
 		difference = new DifferencesPage();
 		compare = new ComparePage();
 		signup = new SignUpPage();
+		uses = new BenadrylUsesPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
