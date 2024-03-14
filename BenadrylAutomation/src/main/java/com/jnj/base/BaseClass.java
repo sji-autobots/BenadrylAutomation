@@ -21,9 +21,13 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
+import com.jnj.pageobjects.ListingPage;
+import com.jnj.pageobjects.ProductPage;
+import com.jnj.pageobjects.SignUpPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -35,11 +39,16 @@ public class BaseClass {
 	public static ExtentTest test;
 	public String defaultFlag = "Yes";
 	public static String baseURI;
+	public static String runOn;
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
+	public static ComparePage compare;
+	public static SignUpPage signup;
+	public static ProductPage pdp;
+	public static ListingPage plp;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -58,11 +67,15 @@ public class BaseClass {
 
 	public static void launchApplication() {
 		String browserName = prop.getProperty("browserName");
-		String runOn = prop.getProperty("runOn");
+		runOn = prop.getProperty("runOn");
+		String headlessChrome = prop.getProperty("headlessChrome");
 		if (browserName.contains("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
+			if (headlessChrome.equals("yes")) {
+				options.addArguments("--headless");
+				options.addArguments("--window-size=1920,1080");
+			}
 			options.addArguments("--remote-allow-origins=*");
-			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 		} else if (browserName.contains("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
@@ -72,10 +85,13 @@ public class BaseClass {
 		header = new HeaderPage();
 		home = new HomePage();
 		difference = new DifferencesPage();
+		compare = new ComparePage();
+		signup = new SignUpPage();
+		pdp = new ProductPage();
+		plp = new ListingPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
-		selectEnv(runOn);
 	}
 
 	public static void extentMarkupLog(Markup markup) {
