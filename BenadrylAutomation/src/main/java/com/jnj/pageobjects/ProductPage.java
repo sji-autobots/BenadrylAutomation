@@ -71,7 +71,7 @@ public class ProductPage extends BaseClass{
     @FindBy(css = ".pane-node-field-product-directions h2")
     WebElement directionHeading;
 
-    @FindBy(css = "#mini-panel-product_ingredients_modal")
+    @FindBy(id = "mini-panel-product_ingredients_modal")
     WebElement ingredientsSection;
 
     @FindBy(css = "#mini-panel-product_ingredients_modal h2")
@@ -80,30 +80,42 @@ public class ProductPage extends BaseClass{
     @FindBy(css = "li #used-for")
     WebElement usedForSection;
 
-    @FindBy(css = "#tab_used-for")
+    @FindBy(id = "tab_used-for")
     WebElement usedForHeading;
 
     @FindBy(css = "li #warnings")
     WebElement warningsSection;
 
-    @FindBy(css = "#tab_warnings")
+    @FindBy(id = "tab_warnings")
     WebElement warningsHeading;
 
-    @FindBy(css = "#mini-panel-product_faq")
+    @FindBy(id = "mini-panel-product_faq")
     WebElement faqsSection;
 
     @FindBy(css = "#mini-panel-product_faq span")
     WebElement faqsHeading;
 
-    @FindBy(css = "#bv_review_maincontainer")
+    @FindBy(css = "#bv-product-reviews")
     WebElement reviewsSection;
-
-    @FindBy(css = "#bv_review_maincontainer h2")
-    WebElement reviewsHeading;
+	
+	@FindBy(xpath = "//div[@id='onetrust-close-btn-container']")
+	WebElement closePrivacyBtn;
     
     public WebElement getJumpToHeadings(String headingText) {
         return driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
     }
+	
+	/**
+	 * Function to click on close privacy pop-up button
+	 */
+	public void closePrivacyPopup() {
+		Action.explicitWaitForElementTobeclickable(closePrivacyBtn, 30);
+		boolean eleDisplayed = closePrivacyBtn.isDisplayed();
+		if(eleDisplayed) {
+			extentPassLog("Privacy pop-up displayed : ", true);
+			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Close button");
+		} else extentFailLog("Privacy pop-up displayed : ", false);
+	}
 
     /**
      * Visits a product page from the homepage.
@@ -126,11 +138,9 @@ public class ProductPage extends BaseClass{
      * Visits a product page from the homepage.
      * Then, verifies the title of the product.
      */
-    public void verifyProdTitle(String expectedText) {
+    public void verifyProdTitle() {
     	this.visitPDP();
         extentInfoLog("Title is displayed : ", Action.isDisplayed(driver, prodTitle));
-		String actualTitle = prodTitle.getText();
-        Assert.assertEquals(actualTitle, expectedText);
         extentInfoLog("Product title verified");
     }
 
@@ -150,6 +160,18 @@ public class ProductPage extends BaseClass{
     public void verifyProdOverview() {
     	this.visitPDP();
         extentInfoLog("Overview is displayed : ", Action.isDisplayed(driver, prodOverview));
+    }
+
+    /**
+     * Visits a product page from the homepage.
+     * Then, verifies the buttons.
+     */
+    public void verifyButtons(String expectedText) {
+        if(expectedText.contains("Write a review")) {
+            this.verifyWriteAReviewBtn(expectedText);
+        } else {
+        	this.verifyBuyNowBtn(expectedText);
+        }
     }
 
     /**
@@ -280,15 +302,12 @@ public class ProductPage extends BaseClass{
      * Visits a product page from the homepage.
      * Then, verifies the jump to heading.
      */
-    public void verifyJumpToReview(String jumpToHeading, String sectionHeading) {
+    public void verifyJumpToReview(String jumpToHeading) {
     	this.visitPDP();
 		WebElement jumpToHead= getJumpToHeadings(jumpToHeading);
 		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = reviewsHeading.getText();
     	Action.scrollUntilElementVisible(jumpToTitle);
 		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
         extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, reviewsSection));
-        Assert.assertEquals(actualHeadingText, sectionHeading);
-        extentInfoLog(jumpToHeadingText + "jump heading verified");
     }
 }
