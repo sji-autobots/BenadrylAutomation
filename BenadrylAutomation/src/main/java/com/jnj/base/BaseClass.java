@@ -25,6 +25,7 @@ import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
+import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.utility.ExtentManager;
 
@@ -45,6 +46,7 @@ public class BaseClass {
 	public static DifferencesPage difference;
 	public static ComparePage compare;
 	public static SignUpPage signup;
+	public static OurIngredientsPage ingredient;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -83,6 +85,7 @@ public class BaseClass {
 		difference = new DifferencesPage();
 		compare = new ComparePage();
 		signup = new SignUpPage();
+		ingredient = new OurIngredientsPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
