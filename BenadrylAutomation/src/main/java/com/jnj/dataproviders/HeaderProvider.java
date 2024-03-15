@@ -22,4 +22,24 @@ public class HeaderProvider {
 	public Object[][] headerMainMenu() throws IOException {
 		return provider.getData(dataPath, "headerMainMenu");
 	}
+	
+	@org.testng.annotations.DataProvider(name = "headerSubMenu")
+	public Object[][] headerSubMenu() throws IOException {
+		return provider.getData(dataPath, "headerSubMenu");
+	}
+	
+	@org.testng.annotations.DataProvider(name = "whereToBuy")
+	public Object[][] whereToBuy() throws IOException {
+		return provider.getData(dataPath, "whereToBuy");
+	}
+	
+	@org.testng.annotations.DataProvider(name = "language")
+	public Object[][] language() throws IOException {
+		return provider.getData(dataPath, "language");
+	}
+	
+	@org.testng.annotations.DataProvider(name = "search")
+	public Object[][] search() throws IOException {
+		return provider.getData(dataPath, "search");
+	}
 }
