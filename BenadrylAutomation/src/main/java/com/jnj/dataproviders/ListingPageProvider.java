@@ -18,8 +18,23 @@ public class ListingPageProvider {
 
     DataProvider provider = new DataProvider();
 
-    @org.testng.annotations.DataProvider(name = "prodPageBtns")
-    public Object[][] prodPageBtns() throws IOException {
-        return provider.getData(dataPath, "prodPageBtns");
+    @org.testng.annotations.DataProvider(name = "bannerImg")
+    public Object[][] bannerImg() throws IOException {
+        return provider.getData(dataPath, "bannerImg");
+    }
+
+    @org.testng.annotations.DataProvider(name = "bannerTexts")
+    public Object[][] bannerTexts() throws IOException {
+        return provider.getData(dataPath, "bannerTexts");
+    }
+
+    @org.testng.annotations.DataProvider(name = "quickFilter")
+    public Object[][] quickFilter() throws IOException {
+        return provider.getData(dataPath, "quickFilter");
+    }
+
+    @org.testng.annotations.DataProvider(name = "products")
+    public Object[][] products() throws IOException {
+        return provider.getData(dataPath, "products");
     }
 }

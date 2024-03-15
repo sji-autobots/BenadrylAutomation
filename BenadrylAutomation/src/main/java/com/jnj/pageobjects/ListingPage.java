@@ -27,10 +27,25 @@ public class ListingPage extends BaseClass{
     }
 
     /**
-     * Locators
+     * Locators 
      */
-    @FindBy(css = "#tab-menu-8651")
-    WebElement prodHeaderMenu;
+    @FindBy(css = "#file-926 img")
+    WebElement bannerImage;
+    
+    @FindBy(css = ".inner > #content-main")
+    WebElement bannerHeading;
+
+    @FindBy(css = ".inner p")
+    WebElement bannerSubHeading;
+
+    @FindBy(css = "[data-value='56']")
+    WebElement adultOralQuickFilter;
+
+    @FindBy(css = "[data-value='711']")
+    WebElement adultTopicalQuickFilter;
+
+    @FindBy(css = "[data-value='61']")
+    WebElement kidsProdQuickFilter;
 	
 	@FindBy(xpath = "//div[@id='onetrust-close-btn-container']")
 	WebElement closePrivacyBtn;
@@ -55,7 +70,7 @@ public class ListingPage extends BaseClass{
      * Visits a product page from the homepage.
      */
     public void visitPLP() {
-        Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
+//        Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
     }
 
     /**
