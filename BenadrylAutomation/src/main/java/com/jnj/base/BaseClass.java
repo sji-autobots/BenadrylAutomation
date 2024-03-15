@@ -21,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
@@ -43,6 +44,7 @@ public class BaseClass {
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
+	public static ComparePage compare;
 	public static OurIngredientsPage ingredient;
 	public static ProductPage pdp;
 
@@ -77,6 +79,7 @@ public class BaseClass {
 		header = new HeaderPage();
 		home = new HomePage();
 		difference = new DifferencesPage();
+		compare = new ComparePage();
 		ingredient = new OurIngredientsPage();
 		pdp = new ProductPage();
 
