@@ -27,6 +27,7 @@ import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
 import com.jnj.pageobjects.ListingPage;
 import com.jnj.pageobjects.ProductPage;
+import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.utility.ExtentManager;
 
@@ -49,6 +50,7 @@ public class BaseClass {
 	public static SignUpPage signup;
 	public static ProductPage pdp;
 	public static ListingPage plp;
+	public static OurIngredientsPage ingredient;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -89,6 +91,7 @@ public class BaseClass {
 		signup = new SignUpPage();
 		pdp = new ProductPage();
 		plp = new ListingPage();
+		ingredient = new OurIngredientsPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
