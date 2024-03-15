@@ -52,6 +52,9 @@ public class HomePage extends BaseClass{
 
 	@FindBy(xpath = "(//h2)[5]")
 	WebElement moreOnSectn;
+	
+	@FindBy(xpath = "//div[@id='onetrust-close-btn-container']")
+	WebElement closePrivacyBtn;
 
 	public WebElement getSection(String index) {
 		return driver.findElement(By.xpath("(//h2)['" + index + "']"));
@@ -76,7 +79,19 @@ public class HomePage extends BaseClass{
 	public WebElement moreOnSectn(String name) {
 		return driver.findElement(By.xpath("//a[normalize-space()='" + name + "']"));
 	}
-
+	
+	/**
+	 * Function to click on close privacy pop-up button
+	 */
+	public void closePrivacyPopup() {
+		Action.explicitWaitForElementTobeclickable(closePrivacyBtn, 30);
+		boolean eleDisplayed = closePrivacyBtn.isDisplayed();
+		if(eleDisplayed) {
+			extentPassLog("Privacy pop-up displayed : ", true);
+			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Close' button");
+		} else extentFailLog("Privacy pop-up displayed : ", false);
+	}
+	
 	/**
 	 * Verifies the home banner by checking the displayed banner image, heading, and Learn More button.
 	 * Then, clicks on the Learn More button and verifies the resulting page URL.

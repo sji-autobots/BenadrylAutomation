@@ -24,6 +24,8 @@ import com.jnj.actions.Action;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
+import com.jnj.pageobjects.OurIngredientsPage;
+import com.jnj.pageobjects.ProductPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -35,11 +37,14 @@ public class BaseClass {
 	public static ExtentTest test;
 	public String defaultFlag = "Yes";
 	public static String baseURI;
+	public static String runOn;
 	public ExtentReports exprep = ExtentManager.setExtent();
 
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
+	public static OurIngredientsPage ingredient;
+	public static ProductPage pdp;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -72,6 +77,8 @@ public class BaseClass {
 		header = new HeaderPage();
 		home = new HomePage();
 		difference = new DifferencesPage();
+		ingredient = new OurIngredientsPage();
+		pdp = new ProductPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
