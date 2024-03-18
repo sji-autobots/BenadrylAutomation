@@ -21,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.AllergiesPage;
 import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.HeaderPage;
@@ -47,7 +48,8 @@ public class BaseClass {
 	public static ComparePage compare;
 	public static SignUpPage signup;
 	public static OurIngredientsPage ingredient;
-
+	public static AllergiesPage allergies;
+	
 	@BeforeSuite
 	public void loadConfig() throws IOException {
 		ExtentManager.setExtent();
@@ -86,7 +88,8 @@ public class BaseClass {
 		compare = new ComparePage();
 		signup = new SignUpPage();
 		ingredient = new OurIngredientsPage();
-
+		allergies = new AllergiesPage();
+		
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
 	}

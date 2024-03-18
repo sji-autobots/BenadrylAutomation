@@ -983,7 +983,7 @@ public class Action extends BaseClass {
 	 * @param array2 pass second array
 	 * @return string of common elements
 	 */
-	public static String filterArraysAndReturnIntersection(String[] array1, String[] array2) {
+	public static String filterArraysAndReturnIntersection(String[] array1, final String[] array2) {
 		// Create a Stream object for the first array.
 		Stream<String> stream = Arrays.stream(array1);
 		Stream<String> filteredStream = stream.filter(element -> Arrays.asList(array2).contains(element));
