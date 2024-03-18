@@ -29,11 +29,11 @@ public class FooterPage extends BaseClass {
 	@FindBy(xpath = "//*[@id='footer']")
 	WebElement footerbanner;
 
-	public WebElement getfooteroption(String link) {
+	public WebElement getFooterOption(String link) {
 		return driver.findElement(By.xpath("//a[normalize-space()='" + link + "']"));
 	}
 	
-	public WebElement getSecondfooteroption(String link) {
+	public WebElement getSecondFooterOption(String link) {
 		return driver.findElement(By.xpath("//*[@id='footer']//a[normalize-space()='" + link + "']"));
 	}
 	
@@ -49,9 +49,9 @@ public class FooterPage extends BaseClass {
 	 */
 	public void verifyFooterlink(String link, String expectedUrl) {
 		extentInfoLog("Banner is displayed : ",Action.isDisplayed(driver, footerbanner));
-		Action.explicitWaitForElementTobeclickable(this.getfooteroption(link), 10);
-		Action.performActionwithExtentInfoLog(this.getfooteroption(link), "click",
-				"Clicking on : " + this.getfooteroption(link).getText());
+		Action.explicitWaitForElementTobeclickable(this.getFooterOption(link), 10);
+		Action.performActionwithExtentInfoLog(this.getFooterOption(link), "click",
+				"Clicking on : " + this.getFooterOption(link).getText());
 		Action.verifyPageUrl(expectedUrl);
 		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 		Action.navigateBack();
@@ -63,11 +63,11 @@ public class FooterPage extends BaseClass {
 	 * @param link text of the footer link to be verified.
 	 * @param expectedUrl The expected URL that the link should navigate to.
 	 */
-	public void getSecondfooteroption(String link, String expectedUrl) {
+	public void verifySecondFooterOption(String link, String expectedUrl) {
 		extentInfoLog("Banner is displayed : ",Action.isDisplayed(driver, footerbanner));
-		Action.explicitWaitForElementTobeclickable(this.getSecondfooteroption(link), 10);
-		Action.performActionwithExtentInfoLog(this.getSecondfooteroption(link), "click",
-				"Clicking on : " + this.getSecondfooteroption(link).getText());
+		Action.explicitWaitForElementTobeclickable(this.getSecondFooterOption(link), 10);
+		Action.performActionwithExtentInfoLog(this.getSecondFooterOption(link), "click",
+				"Clicking on : " + this.getSecondFooterOption(link).getText());
 		Action.verifyPageUrl(expectedUrl);
 		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 		Action.navigateBack();
@@ -79,11 +79,11 @@ public class FooterPage extends BaseClass {
 	 * @param link text of the footer link to be verified.
 	 * @param expectedUrl The expected URL that the link should navigate to.
 	 */
-	public void getThirdfooteroption(String link, String expectedUrl) {
+	public void verifyThirdFooterOption(String link, String expectedUrl) {
 		extentInfoLog("Banner is displayed : ",Action.isDisplayed(driver, footerbanner));
-		Action.explicitWaitForElementTobeclickable(this.getSecondfooteroption(link), 10);
-		Action.performActionwithExtentInfoLog(this.getSecondfooteroption(link), "click",
-				"Clicking on : " + this.getSecondfooteroption(link).getText());
+		Action.explicitWaitForElementTobeclickable(this.getSecondFooterOption(link), 10);
+		Action.performActionwithExtentInfoLog(this.getSecondFooterOption(link), "click",
+				"Clicking on : " + this.getSecondFooterOption(link).getText());
 		Action.verifyPageUrl(expectedUrl);
 		extentInfoLog("URL Verified : ", baseURI+expectedUrl);
 		Action.navigateBack();

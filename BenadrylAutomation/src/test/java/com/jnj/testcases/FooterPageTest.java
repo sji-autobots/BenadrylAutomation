@@ -19,40 +19,48 @@ public class FooterPageTest extends BaseClass {
 		launchApplication();
 	}
 	
-	@Test(priority = 1, description = "Verify the footer link of first column", dataProvider = "footer", dataProviderClass = FooterProvider.class, enabled = true)
-	public void Footer_verifyFirstColumn(String testcase, String execution, String link , String expectedUrl) {
+	@Test(priority = 1, dataProvider = "footer", dataProviderClass = FooterProvider.class)
+	public void FOOTER_verifyFirstColumn(String testcase, String execution, String link , String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
 			footer.verifyFooterlink(link, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}  
 	
-	@Test(priority = 2, description = "Verify the footer link of second column", dataProvider = "footerSecondColumn", dataProviderClass = FooterProvider.class, enabled = true)
-	public void Footer_verifySecondColumn(String testcase, String execution, String link , String expectedUrl) {
+	@Test(priority = 2, dataProvider = "footerSecondColumn", dataProviderClass = FooterProvider.class)
+	public void FOOTER_verifySecondColumn(String testcase, String execution, String link , String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
-			footer.getSecondfooteroption(link, expectedUrl);
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			footer.verifySecondFooterOption(link, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}  
 	
-	@Test(priority = 3, description = "Verify the footer link of third column", dataProvider = "footerLastColumn", dataProviderClass = FooterProvider.class, enabled = true)
-	public void Footer_verifyThirdColumn(String testcase, String execution, String link , String expectedUrl) {
+	@Test(priority = 3,dataProvider = "footerLastColumn", dataProviderClass = FooterProvider.class)
+	public void FOOTER_verifyThirdColumn(String testcase, String execution, String link , String expectedUrl) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
-			footer.getThirdfooteroption(link, expectedUrl);
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			footer.verifyThirdFooterOption(link, expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}  
 	
-	@Test(priority = 4, description = "Verify the footer heading", dataProvider = "footerHeading", dataProviderClass = FooterProvider.class, enabled = true)
-	public void Footer_verifyheading(String testcase, String execution, String link) {
+	@Test(priority = 4,dataProvider = "footerHeading", dataProviderClass = FooterProvider.class)
+	public void FOOTER_verifyheading(String testcase, String execution, String link) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
 			footer.footerHeading(link);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
