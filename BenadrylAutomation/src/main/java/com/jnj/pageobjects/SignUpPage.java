@@ -16,7 +16,6 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class SignUpPage extends BaseClass {
-
 	Actions actions;
 
 	/**
@@ -71,7 +70,20 @@ public class SignUpPage extends BaseClass {
 		} catch (Exception e) {
 			Assert.fail("Logo not displayed");
 		}
+	}
 
+	/**
+	 * Function to click on close button of signup pop-up
+	 *
+	 */
+	public void closeSignupPopup() {
+		Action.waitFor(5000);
+		try {
+			Action.performActionwithExtentInfoLog(closeBtn, "click", "Clicking on : Close button of Signup pop-up");
+		} catch (Exception e) {
+			extentInfoLog("Signup Pop-up  : ", "not displayed");
+		}
+		Action.waitFor(5000);
 	}
 
 	/**
@@ -84,7 +96,6 @@ public class SignUpPage extends BaseClass {
 	 * @param key        pass keyword
 	 * @param validation pass validation message
 	 */
-
 	public void EnterNameAndEmail(String fnameValue, String fname, String emailValue, String email, String key,
 			String validation) {
 		try {
