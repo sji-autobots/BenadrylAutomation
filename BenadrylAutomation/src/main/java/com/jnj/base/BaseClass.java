@@ -22,6 +22,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
 import com.jnj.pageobjects.DifferencesPage;
+import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
 import com.jnj.utility.ExtentManager;
@@ -40,6 +41,7 @@ public class BaseClass {
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
+	public static FooterPage footer;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -72,6 +74,7 @@ public class BaseClass {
 		header = new HeaderPage();
 		home = new HomePage();
 		difference = new DifferencesPage();
+		footer = new FooterPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);

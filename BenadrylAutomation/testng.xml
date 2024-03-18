@@ -4,21 +4,15 @@
 	<listeners>
 		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
- 	<test name="HEADER PAGE">
-		<classes>
-			<class name="com.jnj.testcases.HeaderPageTest" />
-
-		</classes>
-	</test>
-	<test name="HOME PAGE">
+ 	<test name="Regression Suite Testcases">
 		<classes>
 			<class name="com.jnj.testcases.HomePageTest" />
-		</classes>
-	</test>
-
-	<test name="DIFFERENCE PAGE">
-		<classes>
+			<class name="com.jnj.testcases.SignUpPageTest" />
+			<class name="com.jnj.testcases.HeaderPageTest" />
 			<class name="com.jnj.testcases.DifferencePageTest" />
+			<class name="com.jnj.testcases.ComparePageTest" /> 
+			<class name="com.jnj.testcases.FooterPageTest" />
+			
 		</classes>
 	</test>
 </suite>
