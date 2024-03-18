@@ -22,14 +22,14 @@ public class SafetyInformationPageTest extends BaseClass {
 
 	@Test(priority = 1, dataProvider = "urlAndTitle", dataProviderClass = SafetyInformationProvider.class)
 	public void SAFETY_verifyURLAndTitle(String testcase, String execution, String menu, String subMenu,
-			String expectedUrl, String expectedTitle, String expectedDescription, String expectedBannerLink)
+			String expectedUrl, String expectedTitle, String expectedDescription)
 			throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			safety.verifyUrlAndTitle(expectedUrl, expectedTitle, expectedDescription, expectedBannerLink);
+			safety.verifyUrlAndTitle(expectedUrl, expectedTitle, expectedDescription);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}

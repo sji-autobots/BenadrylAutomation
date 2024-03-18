@@ -69,8 +69,7 @@ public class SafetyInformationPage extends BaseClass {
 	 * @param expectedTitle       pass expected title
 	 * @param expectedDescription pass expected description
 	 */
-	public void verifyUrlAndTitle(String expectedUrl, String expectedTitle, String expectedDescription,
-			String expectedBannerLinkUrl) {
+	public void verifyUrlAndTitle(String expectedUrl, String expectedTitle, String expectedDescription) {
 		Action.verifyPageUrl(expectedUrl);
 		String actualBannerTitle = bannerTitle.getText();
 		Action.printAndAssert(actualBannerTitle, expectedTitle);
