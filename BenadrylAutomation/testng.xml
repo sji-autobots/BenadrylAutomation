@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Benadryl - Regression Suite Testcases">
+<suite name="Benadryl">
 	<listeners>
 		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
@@ -12,7 +12,8 @@
 			<class name="com.jnj.testcases.DifferencePageTest" />
 			<class name="com.jnj.testcases.ComparePageTest" /> 
 			<class name="com.jnj.testcases.FooterPageTest" />
-			
+			<class name="com.jnj.testcases.ComparePageTest" />
+			<class name="com.jnj.testcases.OurIngredientsPageTest" />
 		</classes>
 	</test>
 </suite>
