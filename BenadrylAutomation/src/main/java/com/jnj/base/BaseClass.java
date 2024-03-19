@@ -42,7 +42,6 @@ public class BaseClass {
 	public static String baseURI;
 	public static String runOn;
 	public ExtentReports exprep = ExtentManager.setExtent();
-
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
