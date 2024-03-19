@@ -47,6 +47,9 @@ public class SignUpPage extends BaseClass {
 
 	@FindBy(xpath = "//button[@id='edit-submit-button']")
 	WebElement submitBtn;
+	
+	@FindBy(css = "div[id='edit-sfmc-careclub-lightbox-close'] button")
+	WebElement closeLightBox;
 
 	private WebElement enterInputs(String value) {
 		return driver.findElement(By.xpath("//input[@id='edit-sfmc-" + value + "']"));
@@ -157,6 +160,18 @@ public class SignUpPage extends BaseClass {
 			}
 		} catch (Exception e) {
 			Assert.fail("Link not displayed");
+		}
+	}
+	
+	/**
+	 * Function to close signup lightbox
+	 */
+	public void closeSignUpPopup() {
+		try {
+			Action.explicitWaitForElementTobeclickable(closeLightBox, 30);
+			Action.performActionwithExtentInfoLog(closeLightBox, "click", "Closing sign up lightbox");
+		} catch (Exception e) {
+			BaseClass.extentInfoLog("Signup lightbox not displayed");
 		}
 	}
 }

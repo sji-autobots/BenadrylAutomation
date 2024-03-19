@@ -12,6 +12,8 @@
 			<class name="com.jnj.testcases.HeaderPageTest" />
 			<class name="com.jnj.testcases.DifferencePageTest" />
 			<class name="com.jnj.testcases.ComparePageTest" />
+			<class name="com.jnj.testcases.BenadrylUsesTest" />
+			
 		</classes>
 	</test>
 </suite>
