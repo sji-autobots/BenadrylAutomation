@@ -30,22 +30,25 @@ public class SignUpPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//div[@class='sfmc-careclub-logo']")
-	WebElement logo;
+	private WebElement logo;
 
 	@FindBy(xpath = "//button[@class='close sfmc-careclub-lightbox-close']")
-	WebElement closeBtn;
+	private WebElement closeBtn;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-title']//p[1]")
-	WebElement signUpTitle;
+	private WebElement signUpTitle;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-privacy']//a[@class='no-ext ext']")
-	WebElement privacyPolicyLink;
+	private WebElement privacyPolicyLink;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-privacy']//a[@class='ext']//span[@class='ext']")
-	WebElement financialIncentiveNoticeLink;
+	private WebElement financialIncentiveNoticeLink;
 
 	@FindBy(xpath = "//button[@id='edit-submit-button']")
-	WebElement submitBtn;
+	private WebElement submitBtn;
+	
+	@FindBy(css = "div[id='edit-sfmc-careclub-lightbox-close'] button")
+	private WebElement closeLightBox;
 
 	private WebElement enterInputs(String value) {
 		return driver.findElement(By.xpath("//input[@id='edit-sfmc-" + value + "']"));
@@ -73,17 +76,15 @@ public class SignUpPage extends BaseClass {
 	}
 
 	/**
-	 * Function to click on close button of signup pop-up
-	 *
+	 * Function to close signup lightbox
 	 */
-	public void closeSignupPopup() {
-		Action.waitFor(5000);
+	public void closeSignUpPopup() {
 		try {
-			Action.performActionwithExtentInfoLog(closeBtn, "click", "Clicking on : Close button of Signup pop-up");
+			Action.explicitWaitForElementTobeclickable(closeLightBox, 30);
+			Action.performActionwithExtentInfoLog(closeLightBox, "click", "Closing sign up lightbox");
 		} catch (Exception e) {
-			extentInfoLog("Signup Pop-up  : ", "not displayed");
+			BaseClass.extentInfoLog("Signup lightbox not displayed");
 		}
-		Action.waitFor(5000);
 	}
 
 	/**

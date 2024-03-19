@@ -197,7 +197,7 @@ public class ComparePage extends BaseClass {
 			Action.explicitWait(buyNowBtn(product), 30);
 			buyNowBtn(product).click();
 			extentInfoLog("Clicked on : ", "buy now button");
-			signup.closeSignupPopup();
+			signup.closeSignUpPopup();
 			String actualProduct = productNameOnBuyNow.getText();
 			Action.printAndAssert(actualProduct, expectedProduct);
 		} else

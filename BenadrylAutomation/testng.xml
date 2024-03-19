@@ -14,7 +14,6 @@
 			<class name="com.jnj.testcases.FooterPageTest" />
 			<class name="com.jnj.testcases.OurIngredientsPageTest" />
 			<class name="com.jnj.testcases.SafetyInformationPageTest" />
-			
 		</classes>
 	</test>
 </suite>

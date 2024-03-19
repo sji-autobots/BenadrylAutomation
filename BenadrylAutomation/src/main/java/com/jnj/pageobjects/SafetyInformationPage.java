@@ -29,22 +29,22 @@ public class SafetyInformationPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//h1[@id='content-main']")
-	WebElement bannerTitle;
+	private WebElement bannerTitle;
 
 	@FindBy(xpath = "//p[contains(text(),'The safety of the people who use our products is o')]")
-	WebElement bannerDescription;
+	private WebElement bannerDescription;
 
 	@FindBy(xpath = "(//div[@class='ps-product-details']/h2)[1]")
-	WebElement productNameOnBuyNow;
+	private WebElement productNameOnBuyNow;
 
 	@FindBy(xpath = "//a[@href='https://www.poison.org/']")
-	WebElement poisonControlCenterLink;
+	private WebElement poisonControlCenterLink;
 
 	@FindBy(xpath = "//a[normalize-space()='FAQs page']")
-	WebElement faqsPageLink;
+	private WebElement faqsPageLink;
 
 	@FindBy(xpath = "(//a[@href='/benadryl-dosing-guide'])[2]")
-	WebElement dosageLink;
+	private WebElement dosageLink;
 
 	private WebElement getHeadings(String value) {
 		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
@@ -131,7 +131,7 @@ public class SafetyInformationPage extends BaseClass {
 			Action.explicitWait(buyNowBtn(product), 30);
 			buyNowBtn(product).click();
 			extentInfoLog("Clicked on : ", "buy now button");
-			signup.closeSignupPopup();
+			signup.closeSignUpPopup();
 			String actualProduct = productNameOnBuyNow.getText();
 			Action.printAndAssert(actualProduct, expectedProduct);
 		} else
