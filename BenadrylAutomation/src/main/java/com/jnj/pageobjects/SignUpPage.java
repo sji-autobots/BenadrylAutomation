@@ -16,7 +16,6 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class SignUpPage extends BaseClass {
-
 	Actions actions;
 
 	/**
@@ -31,22 +30,25 @@ public class SignUpPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//div[@class='sfmc-careclub-logo']")
-	WebElement logo;
+	private WebElement logo;
 
 	@FindBy(xpath = "//button[@class='close sfmc-careclub-lightbox-close']")
-	WebElement closeBtn;
+	private WebElement closeBtn;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-title']//p[1]")
-	WebElement signUpTitle;
+	private WebElement signUpTitle;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-privacy']//a[@class='no-ext ext']")
-	WebElement privacyPolicyLink;
+	private WebElement privacyPolicyLink;
 
 	@FindBy(xpath = "//div[@id='edit-sfmc-careclub-lightbox-privacy']//a[@class='ext']//span[@class='ext']")
-	WebElement financialIncentiveNoticeLink;
+	private WebElement financialIncentiveNoticeLink;
 
 	@FindBy(xpath = "//button[@id='edit-submit-button']")
-	WebElement submitBtn;
+	private WebElement submitBtn;
+	
+	@FindBy(css = "div[id='edit-sfmc-careclub-lightbox-close'] button")
+	private WebElement closeLightBox;
 
 	private WebElement enterInputs(String value) {
 		return driver.findElement(By.xpath("//input[@id='edit-sfmc-" + value + "']"));
@@ -71,7 +73,18 @@ public class SignUpPage extends BaseClass {
 		} catch (Exception e) {
 			Assert.fail("Logo not displayed");
 		}
+	}
 
+	/**
+	 * Function to close signup lightbox
+	 */
+	public void closeSignUpPopup() {
+		try {
+			Action.explicitWaitForElementTobeclickable(closeLightBox, 30);
+			Action.performActionwithExtentInfoLog(closeLightBox, "click", "Closing sign up lightbox");
+		} catch (Exception e) {
+			BaseClass.extentInfoLog("Signup lightbox not displayed");
+		}
 	}
 
 	/**
@@ -84,7 +97,6 @@ public class SignUpPage extends BaseClass {
 	 * @param key        pass keyword
 	 * @param validation pass validation message
 	 */
-
 	public void EnterNameAndEmail(String fnameValue, String fname, String emailValue, String email, String key,
 			String validation) {
 		try {
