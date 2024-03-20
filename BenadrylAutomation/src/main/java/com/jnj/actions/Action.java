@@ -45,7 +45,6 @@ public class Action extends BaseClass {
 
 	public static void scrollUntilElementVisible(WebElement Element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		// Scrolling down the page till the element is found
 		js.executeScript("arguments[0].scrollIntoView();", Element);
 	}
 
@@ -82,16 +81,15 @@ public class Action extends BaseClass {
 			flag = ele.isDisplayed();
 			ele.clear();
 			ele.sendKeys(text);
-			// logger.info("Entered text :"+text);
 			flag = true;
 		} catch (Exception e) {
 			System.out.println("Location Not found");
 			flag = false;
 		} finally {
 			if (flag) {
-				System.out.println("Successfully entered value");
+				extentInfoLog("Successfully entered : ", "value");
 			} else {
-				System.out.println("Unable to enter value");
+				extentInfoLog("Unable to entered : ", "value");
 			}
 		}
 		return flag;
@@ -103,14 +101,12 @@ public class Action extends BaseClass {
 			ele.isDisplayed();
 			flag = true;
 		} catch (Exception e) {
-			// System.out.println("Location not found: "+locatorName);
 			flag = false;
 		} finally {
 			if (flag) {
-				System.out.println("Successfully Found element at");
-
+				extentInfoLog("Successfully Found : ", "element");
 			} else {
-				System.out.println("Unable to locate element at");
+				extentInfoLog("Unable to Found : ", "element");
 			}
 		}
 		return flag;
@@ -122,12 +118,12 @@ public class Action extends BaseClass {
 		if (flag) {
 			flag = ele.isDisplayed();
 			if (flag) {
-				System.out.println("The element is Displayed");
+				extentInfoLog("Successfully displayed : ", "element");
 			} else {
-				System.out.println("The element is not Displayed");
+				extentInfoLog("Unable to display : ", "element");
 			}
 		} else {
-			System.out.println("Not displayed ");
+			extentInfoLog("Not display : ", "element");
 		}
 		return flag;
 	}
@@ -138,12 +134,12 @@ public class Action extends BaseClass {
 		if (flag) {
 			flag = ele.isSelected();
 			if (flag) {
-				System.out.println("The element is Selected");
+				extentInfoLog("Selected the : ", "element");
 			} else {
-				System.out.println("The element is not Selected");
+				extentInfoLog("Not selected the : ", "element");
 			}
 		} else {
-			System.out.println("Not selected ");
+			extentInfoLog("Not selected the : ", "element");
 		}
 		return flag;
 	}
@@ -154,12 +150,12 @@ public class Action extends BaseClass {
 		if (flag) {
 			flag = ele.isEnabled();
 			if (flag) {
-				System.out.println("The element is Enabled");
+				extentInfoLog("Enabled the : ", "element");
 			} else {
-				System.out.println("The element is not Enabled");
+				extentInfoLog("Not enabled the : ", "element");
 			}
 		} else {
-			System.out.println("Not Enabled ");
+			extentInfoLog("Not enabled the : ", "element");
 		}
 		return flag;
 	}
@@ -175,10 +171,9 @@ public class Action extends BaseClass {
 			return false;
 		} finally {
 			if (flag) {
-				System.out.println("Select value from the DropDown");
+				extentInfoLog("Select value from the : ", "DropDown");
 			} else {
-				System.out.println("Not Selected value from the DropDown");
-				// throw new ElementNotFoundException("", "", "")
+				extentInfoLog("Not Selected value from the : ", "DropDown");
 			}
 		}
 	}

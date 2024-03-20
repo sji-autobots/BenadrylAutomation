@@ -28,17 +28,17 @@ public class FooterPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//*[@id='footer']")
-	WebElement footerbanner;
+	private WebElement footerbanner;
 
-	public WebElement getFooterOption(String link) {
+	private WebElement getFooterOption(String link) {
 		return driver.findElement(By.xpath("//a[normalize-space()='" + link + "']"));
 	}
 
-	public WebElement getSecondFooterOption(String link) {
+	private WebElement getSecondFooterOption(String link) {
 		return driver.findElement(By.xpath("//*[@id='footer']//a[normalize-space()='" + link + "']"));
 	}
 
-	public WebElement getFooterHeading(String link) {
+	private WebElement getFooterHeading(String link) {
 		return driver.findElement(By.xpath("//span[normalize-space()='" + link + "']"));
 	}
 
