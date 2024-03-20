@@ -33,8 +33,8 @@ public class ListingPageProvider {
         return provider.getData(dataPath, "quickFilter");
     }
 
-    @org.testng.annotations.DataProvider(name = "products")
-    public Object[][] products() throws IOException {
-        return provider.getData(dataPath, "products");
+    @org.testng.annotations.DataProvider(name = "sortBy")
+    public Object[][] sortBy() throws IOException {
+        return provider.getData(dataPath, "sortBy");
     }
 }

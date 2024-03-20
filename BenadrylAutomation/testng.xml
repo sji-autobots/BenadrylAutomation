@@ -13,6 +13,7 @@
 			<class name="com.jnj.testcases.ComparePageTest" />
 			<class name="com.jnj.testcases.ProductPageTest" />
 			<class name="com.jnj.testcases.OurIngredientsPageTest" />
+			<class name="com.jnj.testcases.ListingPageTest" />
 		</classes>
 	</test>
 </suite>

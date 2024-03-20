@@ -29,6 +29,9 @@ public class ListingPage extends BaseClass{
     /**
      * Locators 
      */
+    @FindBy(css = "#tab-menu-8651")
+    WebElement prodHeaderMenu;
+    
     @FindBy(css = "#file-926 img")
     WebElement bannerImage;
     
@@ -49,9 +52,19 @@ public class ListingPage extends BaseClass{
 	
 	@FindBy(xpath = "//div[@id='onetrust-close-btn-container']")
 	WebElement closePrivacyBtn;
+	
+	@FindBy(css = ".main-row .three-quarters")
+	WebElement productsPanel;
+	
+	@FindBy(id = "edit-sort-by")
+	WebElement sortBySelector;
     
-    public WebElement getJumpToHeadings(String headingText) {
-        return driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
+    public WebElement getBanner(String text) {
+        return driver.findElement(By.xpath("//div[@class='inner']/*[contains(.,'" + text + "')]"));
+    }
+    
+    public WebElement getFilter(String text) {
+        return driver.findElement(By.xpath("//div[@class='filter-row-shortcuts']/a[contains(.,'" + text + "')]"));
     }
 	
 	/**
@@ -67,28 +80,55 @@ public class ListingPage extends BaseClass{
 	}
 
     /**
-     * Visits a product page from the homepage.
+     * Visits a product listing page from the homepage.
      */
     public void visitPLP() {
-//        Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
+        Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
     }
 
     /**
-     * Visits a product page from the homepage.
-     * Then, verifies if the image of the product is visible.
+     * Visits a listing page from the homepage.
+     * Then, verifies the banner image in the listing page.
      */
-    public void verifyProdImage() {
+    public void verifyBannerImage() {
     	this.visitPLP();
-//        extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, prodImg));
+        extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, bannerImage));
     }
 
     /**
-     * Visits a product page from the homepage.
-     * Then, verifies the title of the product.
+     * Visits a listing page from the homepage.
+     * Then, verifies the banner texts in the listing page.
      */
-    public void verifyProdTitle() {
+    public void verifyBannerTexts(String text) {
     	this.visitPLP();
-//        extentInfoLog("Title is displayed : ", Action.isDisplayed(driver, prodTitle));
-        extentInfoLog("Product title verified");
+		WebElement actualElem= getBanner(text);
+		String actualText= actualElem.getText();
+        extentInfoLog("Banner heading is displayed : ", Action.isDisplayed(driver, actualElem));
+        Assert.assertEquals(actualText, text);
+        extentInfoLog("Banner text verified");
+    }
+
+    /**
+     * Visits a listing page from the homepage.
+     * Then, verifies the filters in the listing page.
+     */
+    public void verifyQuickFilters(String text) {
+    	this.visitPLP();
+		WebElement actualElem= getFilter(text);
+		String actualText= actualElem.getText();
+        extentInfoLog("Filter text is displayed : ", Action.isDisplayed(driver, actualElem));
+		Action.performActionwithExtentInfoLog(actualElem, "click", "Clicking on : " + actualText);
+        extentInfoLog("Products are displayed : ", Action.isDisplayed(driver, productsPanel));
+    }
+
+    /**
+     * Visits a listing page from the homepage.
+     * Then, verifies the sort by selector the listing page.
+     */
+    public void verifySortBy(String text) {
+    	this.visitPLP();
+      extentInfoLog("Sort by displayed : ", Action.isDisplayed(driver, sortBySelector));
+      Action.selectByValue(sortBySelector, text);
+        extentInfoLog("Products are displayed : ", Action.isDisplayed(driver, productsPanel));
     }
 }
