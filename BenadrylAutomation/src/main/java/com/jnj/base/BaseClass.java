@@ -23,11 +23,13 @@ import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
 import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
+import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
 import com.jnj.pageobjects.ListingPage;
 import com.jnj.pageobjects.ProductPage;
 import com.jnj.pageobjects.OurIngredientsPage;
+import com.jnj.pageobjects.SafetyInformationPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.utility.ExtentManager;
 
@@ -42,15 +44,16 @@ public class BaseClass {
 	public static String baseURI;
 	public static String runOn;
 	public ExtentReports exprep = ExtentManager.setExtent();
-
 	public static HeaderPage header;
 	public static HomePage home;
 	public static DifferencesPage difference;
+	public static FooterPage footer;
 	public static ComparePage compare;
 	public static SignUpPage signup;
 	public static ProductPage pdp;
 	public static ListingPage plp;
 	public static OurIngredientsPage ingredient;
+	public static SafetyInformationPage safety;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -87,11 +90,13 @@ public class BaseClass {
 		header = new HeaderPage();
 		home = new HomePage();
 		difference = new DifferencesPage();
+		footer = new FooterPage();
 		compare = new ComparePage();
 		signup = new SignUpPage();
 		pdp = new ProductPage();
 		plp = new ListingPage();
 		ingredient = new OurIngredientsPage();
+		safety = new SafetyInformationPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
