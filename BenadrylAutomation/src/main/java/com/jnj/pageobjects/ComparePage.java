@@ -29,13 +29,13 @@ public class ComparePage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//h1[@id='content-main']")
-	WebElement bannerTitle;
+	private WebElement bannerTitle;
 
 	@FindBy(xpath = "//p[contains(text(),'With so many allergy medications')]")
-	WebElement bannerDescription;
+	private WebElement bannerDescription;
 
 	@FindBy(xpath = "(//div[@class='ps-product-details']/h2)[1]")
-	WebElement productNameOnBuyNow;
+	private WebElement productNameOnBuyNow;
 
 	private WebElement getHeadings(String value) {
 		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
