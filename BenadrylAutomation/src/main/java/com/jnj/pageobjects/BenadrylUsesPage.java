@@ -30,62 +30,87 @@ public class BenadrylUsesPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(css = "h1[id='content-main']")
-	WebElement bannerTitle;
+	private WebElement bannerTitle;
 
 	@FindBy(xpath = "//h1[@id='content-main']/following-sibling::div/descendant::p[1]")
-	WebElement bannerDescText;
+	private WebElement bannerDescText;
 
 	@FindBy(xpath = "//h1[@id='content-main']/following-sibling::div/descendant::p/a")
-	WebElement learnMoreLink;
+	private WebElement learnMoreLink;
 
 	@FindBy(xpath = "(//*[@class='field__item even']/h2/following-sibling::h3[1])[1]")
-	WebElement seasonalAllergyHeading;
+	private WebElement seasonalAllergyHeading;
 
 	@FindBy(xpath = "(//h3[text()='Seasonal Allergies']/following-sibling::p)[1]")
-	WebElement seasonalAllergyDesc;
+	private WebElement seasonalAllergyDesc;
 
 	@FindBy(xpath = "//a[normalize-space()='Seasonal allergies']")
-	WebElement seasonalAllergyLink;
+	private WebElement seasonalAllergyLink;
 
 	@FindBy(xpath = "(//h2)[3]")
-	WebElement itchySkinHeading;
-	
-	@FindBy(xpath = "//h2[contains(text(),'Which BENADRYL')]")
-	WebElement whichProductHeader;
-	
-	@FindBy(xpath = "//h2[contains(text(),'How to Use')]")
-	WebElement howToUseHeader;
-	
-	@FindBy(xpath = "(//h2[contains(text(),'BENADRYL')])[4]")
-	WebElement forColdHeader;
-	
-	@FindBy(xpath = "(//h2[contains(text(),'BENADRYL')])[3]")
-	WebElement itchySkinSympHeader;
+	private WebElement itchySkinHeading;
 
-	public WebElement getAllergyDescEle(String section, String heading) {
+	@FindBy(xpath = "//h2[contains(text(),'Which BENADRYL')]")
+	private WebElement whichProductHeader;
+
+	@FindBy(xpath = "//h2[contains(text(),'How to Use')]")
+	private WebElement howToUseHeader;
+
+	@FindBy(xpath = "(//h2[contains(text(),'BENADRYL')])[4]")
+	private WebElement forColdHeader;
+
+	@FindBy(xpath = "(//h2[contains(text(),'BENADRYL')])[3]")
+	private WebElement itchySkinSympHeader;
+
+	private WebElement getAllergyDescEle(String section, String heading) {
 		return driver.findElement(By.xpath("//h3[text()='" + section + "']/following-sibling::h4[text()='" + heading
 				+ "']/following-sibling::p[1]"));
 	}
 
-	public WebElement getSymptomDescEle(String symptom, String cause) {
-		return driver.findElement(By.cssSelector("h2:contains('" + symptom + "')+p+h3:contains('" + cause + "')+p"));
-	}
-
-	public WebElement getItchySkinSympEle(String cause) {
+	private WebElement getItchySkinSympEle(String cause) {
 		return driver.findElement(
 				By.xpath("(//h2)[3]/following-sibling::h3[text()='" + cause + "']/following-sibling::p[1]"));
 	}
 
-	public WebElement getColdSympEle(String cause) {
+	private WebElement getColdSympEle(String cause) {
 		return driver.findElement(
 				By.xpath("(//h2)[4]/following-sibling::h3[text()='" + cause + "']/following-sibling::p[1]"));
 	}
-	
-	public WebElement getLinkByText(String text) {
+
+	private WebElement getLinkByText(String text) {
 		return driver.findElement(By.partialLinkText(text));
-		//return driver.findElement(By.css("a:contains('" + text + "')"));
 	}
 
+	private WebElement getSpanHeadings(String value) {
+		return driver.findElement(By.xpath("//span[normalize-space()='" + value + "']"));
+	}
+
+	private WebElement articleName(String value) {
+		return driver.findElement(By.xpath("//span[contains(text(),'" + value + "')]"));
+	}
+
+	private WebElement readMoreLink(String value) {
+		return driver.findElement(By.xpath("//a[contains(@href,'" + value + "')][normalize-space()='READ MORE']"));
+	}
+
+	private WebElement getHeadings(String value) {
+		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
+	}
+
+	private WebElement refText(String value) {
+		return driver.findElement(By.xpath("//*[contains(text(),'" + value + "')]"));
+	}
+
+	private WebElement refLinks(String value) {
+		return driver.findElement(By.xpath("//a[contains(@href,'" + value + "')]"));
+	}
+
+	/**
+	 * Function to verify main heading information
+	 * 
+	 * @param heading     pass expected heading
+	 * @param description pass expected description
+	 */
 	public void verifyMainHeaderInfo(String heading, String description) {
 		String currentTitle, expectedTitle, currentDesc, expectedDesc;
 		Action.scrollIntoCenterUsingJS(driver, bannerTitle);
@@ -108,7 +133,7 @@ public class BenadrylUsesPage extends BaseClass {
 	 * @param expectedUrl         pass expected url as a string
 	 */
 	public void verifySeasonalAllergies(String expectedHeading, String expectedDescription, String expectedUrl) {
-		String currentHeading, currentDesc, currentUrl;
+		String currentHeading, currentDesc;
 		Action.scrollIntoCenterUsingJS(driver, seasonalAllergyHeading);
 		currentHeading = Action.removeNonAlphanumericASCII(seasonalAllergyHeading.getText());
 		expectedHeading = Action.removeNonAlphanumericASCII(expectedHeading);
@@ -123,12 +148,24 @@ public class BenadrylUsesPage extends BaseClass {
 		this.verifySeasonalAllergiesLink(expectedUrl);
 	}
 
-	private void verifySeasonalAllergiesLink(String expectedUrl) {
+	/**
+	 * Function to verify seasonal allergies link
+	 * 
+	 * @param expectedUrl pass expected URL
+	 */
+	public void verifySeasonalAllergiesLink(String expectedUrl) {
 		Action.performActionwithExtentInfoLog(seasonalAllergyLink, "click",
 				"Clicked on : " + seasonalAllergyLink.getText());
 		Action.verifyPageUrl(expectedUrl);
 	}
 
+	/**
+	 * Function to verify description for all allergies
+	 * 
+	 * @param section     pass section
+	 * @param heading     pass expected heading
+	 * @param description pass expected description
+	 */
 	public void verifyAllergiesDesc(String section, String heading, String description) {
 		String actualDesc;
 		Action.scrollIntoCenterUsingJS(driver, this.getAllergyDescEle(section, heading));
@@ -137,11 +174,17 @@ public class BenadrylUsesPage extends BaseClass {
 		Action.printAndAssert(actualDesc, description);
 	}
 
+	/**
+	 * Function to verify sysmptoms causes
+	 * 
+	 * @param symptom     pass symptom
+	 * @param cause       pass cause
+	 * @param description pass expected desc
+	 */
 	public void verifySymptomCasuses(String symptom, String cause, String description) {
 		String actualDesc;
 		WebElement ele = null;
-		// Action.scrollIntoCenterUsingJS(driver, this.getSymptomDescEle(symptom,
-		// cause));
+
 		switch (symptom) {
 		case "Itchy Skin":
 			ele = this.getItchySkinSympEle(cause);
@@ -157,16 +200,28 @@ public class BenadrylUsesPage extends BaseClass {
 		Action.printAndAssert(actualDesc, Action.removeNonAlphanumericASCII(description));
 	}
 
+	/**
+	 * Function to verify links
+	 * 
+	 * @param linktext    pass linktext to click on
+	 * @param expectedUrl pass expected url
+	 */
 	public void verifyLink(String linktext, String expectedUrl) {
 		Action.scrollIntoCenterUsingJS(driver, this.getLinkByText(linktext));
-		Action.performActionwithExtentInfoLog(this.getLinkByText(linktext), "click", "Clicked on : "+this.getLinkByText(linktext).getText());
+		Action.performActionwithExtentInfoLog(this.getLinkByText(linktext), "click",
+				"Clicked on : " + this.getLinkByText(linktext).getText());
 		Action.verifyPageUrl(expectedUrl);
 	}
 
+	/**
+	 * Function to verify headings
+	 * 
+	 * @param expectedHeading pass expected heading
+	 */
 	public void verifyheading(String expectedHeading) {
-		WebElement ele =null;
+		WebElement ele = null;
 		String currentHeading;
-		if(expectedHeading.contains("Product Should I Take")) {
+		if (expectedHeading.contains("Product Should I Take")) {
 			ele = this.whichProductHeader;
 		} else if (expectedHeading.contains("How to Use BENADRYL")) {
 			ele = this.howToUseHeader;
@@ -181,7 +236,56 @@ public class BenadrylUsesPage extends BaseClass {
 		expectedHeading = Action.removeNonAlphanumericASCII(expectedHeading);
 		currentHeading = Action.removeNonAlphanumericASCII(ele.getText());
 		Action.printAndAssert(currentHeading, expectedHeading);
-		BaseClass.extentInfoLog("Assertion success for header : "+currentHeading);
+		BaseClass.extentInfoLog("Assertion success for header : " + currentHeading);
 	}
 
+	/**
+	 * Function to verify url from articles
+	 * 
+	 * @param heading     pass heading
+	 * @param article     pass article
+	 * @param readMore    pass read more
+	 * @param expectedUrl pass expected Url
+	 */
+	public void verifyArticles(String heading, String article, String readMore, String expectedUrl) {
+		Action.explicitWait(getSpanHeadings(heading), 30);
+		boolean eleDisplayed = getSpanHeadings(heading).isDisplayed();
+		if (eleDisplayed) {
+			extentPassLog("Related Content header displayed : ", true);
+			String actualHeading = getSpanHeadings(heading).getText();
+			Action.printAndAssert(actualHeading, heading);
+			Action.explicitWait(articleName(article), 30);
+			String actualArticle = articleName(article).getText();
+			Action.printAndAssert(actualArticle, article);
+			Action.explicitWait(readMoreLink(readMore), 30);
+			Action.performActionwithExtentInfoLog(readMoreLink(readMore), "click",
+					"Clicking on : " + readMoreLink(readMore).getText());
+			Action.verifyPageUrl(expectedUrl);
+		} else
+			extentFailLog("Related Content header displayed : ", false);
+	}
+
+	/**
+	 * Function to verify url from references
+	 * 
+	 * @param heading     pass heading
+	 * @param refText     pass reference Text
+	 * @param link        pass expected link
+	 * @param expectedUrl pass expected Url
+	 */
+	public void verifyReferences(String heading, String refText, String link, String expectedUrl) {
+		String actualHeading = getHeadings(heading).getText();
+		Action.printAndAssert(actualHeading, heading);
+		boolean eleDisplayed = refText(refText).isDisplayed();
+		if (eleDisplayed) {
+			extentPassLog("Reference point displayed : ", true);
+			String actualRef = refText(refText).getText();
+			extentPassLog("Reference point : ", actualRef);
+			Action.performActionwithExtentInfoLog(refLinks(link), "click", "Clicking on : " + refLinks(link).getText());
+			Action.switchToNewWindow(driver);
+			String actualUrl = driver.getCurrentUrl();
+			Action.printAndAssert(actualUrl, expectedUrl);
+		} else
+			extentFailLog("Reference point displayed : ", false);
+	}
 }

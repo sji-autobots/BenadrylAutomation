@@ -41,4 +41,19 @@ public class BenadrylUsesProvider {
 	public Object[][] headings() throws IOException {
 		return provider.getData(dataPath, "headings");
 	}
+	
+	@org.testng.annotations.DataProvider(name = "relatedContent")
+	public Object[][] relatedContent() throws IOException {
+		return provider.getData(dataPath, "relatedContent");
+	}
+
+	@org.testng.annotations.DataProvider(name = "relatedProduct")
+	public Object[][] relatedProduct() throws IOException {
+		return provider.getData(dataPath, "relatedProduct");
+	}
+	
+	@org.testng.annotations.DataProvider(name = "references")
+	public Object[][] references() throws IOException {
+		return provider.getData(dataPath, "references");
+	}
 }

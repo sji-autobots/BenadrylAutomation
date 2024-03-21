@@ -47,7 +47,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 3, dataProvider = "allergiesDesc", dataProviderClass = BenadrylUsesProvider.class, enabled=false)
+	@Test(priority = 3, dataProvider = "allergiesDesc", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifyAllergiesDesc(String testcase, String execution, String menu, String subMenu, String section, String heading, String description) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -61,7 +61,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 3, dataProvider = "symptoms", dataProviderClass = BenadrylUsesProvider.class, enabled=false)
+	@Test(priority = 3, dataProvider = "symptoms", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifySymptomCasuses(String testcase, String execution, String menu, String subMenu, String symptom, String cause, String description) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -103,6 +103,50 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
+	@Test(priority = 6, dataProvider = "relatedProduct", dataProviderClass = BenadrylUsesProvider.class)
+	public void USES_verifyRelatedProduct(String testcase, String execution, String menu, String subMenu, String head,
+			String product, String expectedUrl, String ages, String expectedProductName) throws InterruptedException {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			header.navigateSubMenuLink(menu, subMenu);
+			signup.closeSignUpPopup();
+			compare.verifyRelatedProducts(head, product, expectedUrl, ages, expectedProductName);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
+	
+	@Test(priority = 7, dataProvider = "relatedContent", dataProviderClass = BenadrylUsesProvider.class)
+	public void USES_verifyRelatedArticle(String testcase, String execution, String menu, String subMenu, String head,
+			String title, String readMore, String expectedUrl) throws InterruptedException {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			header.navigateSubMenuLink(menu, subMenu);
+			signup.closeSignUpPopup();
+			uses.verifyArticles(head, title, readMore, expectedUrl);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
+	
+	@Test(priority = 8, dataProvider = "references", dataProviderClass = BenadrylUsesProvider.class)
+	public void USES_verifyReferences(String testcase, String execution, String menu, String subMenu, String head,
+			String refText, String link, String expectedUrl) throws InterruptedException {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			header.navigateSubMenuLink(menu, subMenu);
+			signup.closeSignUpPopup();
+			uses.verifyReferences(head, refText, link, expectedUrl);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
 	
 	@AfterMethod
 	public void tearDown() {
