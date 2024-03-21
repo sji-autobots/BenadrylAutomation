@@ -27,5 +27,4 @@ public class SitemapProvider {
 	public Object[][] links() throws IOException {
 		return provider.getData(dataPath, "links");
 	}
-
 }
