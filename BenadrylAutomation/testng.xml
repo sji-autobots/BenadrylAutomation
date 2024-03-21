@@ -4,16 +4,17 @@
 	<listeners>
 		<listener class-name="com.jnj.utility.CustomListener" />
 	</listeners>
-
-	<test name="Regression Suite Testcases">
+ 	<test name="Regression Suite Testcases">
 		<classes>
 			<class name="com.jnj.testcases.HomePageTest" />
 			<class name="com.jnj.testcases.SignUpPageTest" />
 			<class name="com.jnj.testcases.HeaderPageTest" />
 			<class name="com.jnj.testcases.DifferencePageTest" />
-			<class name="com.jnj.testcases.ComparePageTest" />
+			<class name="com.jnj.testcases.ComparePageTest" /> 
+			<class name="com.jnj.testcases.FooterPageTest" />
 			<class name="com.jnj.testcases.OurIngredientsPageTest" />
 			<class name="com.jnj.testcases.AllergiesPageTest" />
+			<class name="com.jnj.testcases.SafetyInformationPageTest" />
 		</classes>
 	</test>
 </suite>
