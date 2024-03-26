@@ -10,11 +10,12 @@
 			<class name="com.jnj.testcases.SignUpPageTest" />
 			<class name="com.jnj.testcases.HeaderPageTest" />
 			<class name="com.jnj.testcases.DifferencePageTest" />
-			<class name="com.jnj.testcases.ComparePageTest" /> 
+			<class name="com.jnj.testcases.ComparePageTest" />
 			<class name="com.jnj.testcases.FooterPageTest" />
 			<class name="com.jnj.testcases.OurIngredientsPageTest" />
-			<class name="com.jnj.testcases.AllergiesPageTest" />
 			<class name="com.jnj.testcases.SafetyInformationPageTest" />
+			<class name="com.jnj.testcases.SitemapPageTest" />
+			<class name="com.jnj.testcases.AllergiesPageTest" />
 		</classes>
 	</test>
 </suite>

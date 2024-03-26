@@ -28,8 +28,9 @@ import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
 import com.jnj.pageobjects.OurIngredientsPage;
-import com.jnj.pageobjects.SafetyInformationPage;
+
 import com.jnj.pageobjects.SignUpPage;
+import com.jnj.pageobjects.SitemapPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -50,8 +51,9 @@ public class BaseClass {
 	public static ComparePage compare;
 	public static SignUpPage signup;
 	public static OurIngredientsPage ingredient;
+	//public static SafetyInformationPage safety;
+	public static SitemapPage sitemap;
 	public static AllergiesPage allergies;
-	public static SafetyInformationPage safety;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -92,8 +94,9 @@ public class BaseClass {
 		compare = new ComparePage();
 		signup = new SignUpPage();
 		ingredient = new OurIngredientsPage();
+		//safety = new SafetyInformationPage();
+		sitemap = new SitemapPage();
 		allergies = new AllergiesPage();
-		safety = new SafetyInformationPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
