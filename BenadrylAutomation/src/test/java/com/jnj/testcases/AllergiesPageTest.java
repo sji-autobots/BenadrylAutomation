@@ -19,20 +19,22 @@ public class AllergiesPageTest extends BaseClass {
 	}
 
 	@Test(priority = 1, dataProvider = "allergiesNav", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyPageNavigation(String testcase, String execution, String menu, String subMenu, String expectedUrl, String expectedTitle) throws InterruptedException {
+	public void ALLERGIES_verifyPageNavigation(String testcase, String execution, String menu, String subMenu,
+			String expectedUrl, String expectedTitle) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyUrlAndTitle( expectedUrl,  expectedTitle);	
+			allergies.verifyUrlAndTitle(expectedUrl, expectedTitle);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 2, dataProvider = "allergyBanner", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyBanner(String testcase, String execution, String menu, String subMenu, String expectedHeading) throws InterruptedException {
+	public void ALLERGIES_verifyBanner(String testcase, String execution, String menu, String subMenu,
+			String expectedHeading) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
@@ -43,63 +45,63 @@ public class AllergiesPageTest extends BaseClass {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 3, dataProvider = "allergyHeader", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyHeader(String testcase, String execution, String menu, String subMenu, String name, String heading) throws InterruptedException {
+	public void ALLERGIES_verifyHeader(String testcase, String execution, String menu, String subMenu, String name,
+			String heading) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyHeaderScrolling(name,heading);
-			
+			allergies.verifyHeaderScrolling(name, heading);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 4, dataProvider = "allergyHeaderSecond", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifySecondHeader(String testcase, String execution, String menu, String subMenu, String name, String headingScroll) throws InterruptedException {
+	public void ALLERGIES_verifySecondHeader(String testcase, String execution, String menu, String subMenu,
+			String name, String headingScroll) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifySecondHeaderScrolling(name,headingScroll);
-			
+			allergies.verifySecondHeaderScrolling(name, headingScroll);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 5, dataProvider = "relatedContent", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyRelatedContentCard(String testcase, String execution, String menu, String subMenu, String index) throws InterruptedException {
+	public void ALLERGIES_verifyRelatedContentCard(String testcase, String execution, String menu, String subMenu,
+			String index) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
 			allergies.verifyRelatedContent(index);
-			
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@Test(priority = 6, dataProvider = "relatedProduct", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyRelatedProduct(String testcase, String execution, String menu, String subMenu) throws InterruptedException {
+	public void ALLERGIES_verifyRelatedProduct(String testcase, String execution, String menu, String subMenu)
+			throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
 			allergies.verifyRelatedProduct();
-			
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();
