@@ -29,22 +29,22 @@ public class OurIngredientsPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//h1[@id='content-main']")
-	WebElement bannerTitle;
+	private WebElement bannerTitle;
 
 	@FindBy(xpath = "//div[@property='content:encoded']//p[2]")
-	WebElement bannerDescription;
+	private WebElement bannerDescription;
 
 	@FindBy(xpath = "//div[@property='content:encoded']//p[3]")
-	WebElement bannerLink;
+	private WebElement bannerLink;
 
 	@FindBy(xpath = "(//div[@class='field__item even']//h2)[1]")
-	WebElement firstTitle;
+	private WebElement firstTitle;
 
 	@FindBy(xpath = "(//div[@class='field__item even']//h2)[2]")
-	WebElement secondTitle;
+	private WebElement secondTitle;
 
 	@FindBy(xpath = "(//div[@class='field__item even']//h2)[3]")
-	WebElement thirdTitle;
+	private WebElement thirdTitle;
 
 	private WebElement getHeader(String value) {
 		return driver.findElement(By.xpath("//h3[contains(text(),'" + value + "')]"));

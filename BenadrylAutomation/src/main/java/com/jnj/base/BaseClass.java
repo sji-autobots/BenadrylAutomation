@@ -30,6 +30,7 @@ import com.jnj.pageobjects.HomePage;
 import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.SafetyInformationPage;
 import com.jnj.pageobjects.SignUpPage;
+import com.jnj.pageobjects.SitemapPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -49,9 +50,10 @@ public class BaseClass {
 	public static FooterPage footer;
 	public static ComparePage compare;
 	public static SignUpPage signup;
-	public static BenadrylUsesPage uses;
 	public static OurIngredientsPage ingredient;
 	public static SafetyInformationPage safety;
+	public static SitemapPage sitemap;
+	public static BenadrylUsesPage uses;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -91,9 +93,10 @@ public class BaseClass {
 		footer = new FooterPage();
 		compare = new ComparePage();
 		signup = new SignUpPage();
-		uses = new BenadrylUsesPage();
 		ingredient = new OurIngredientsPage();
 		safety = new SafetyInformationPage();
+		sitemap = new SitemapPage();
+		uses = new BenadrylUsesPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);

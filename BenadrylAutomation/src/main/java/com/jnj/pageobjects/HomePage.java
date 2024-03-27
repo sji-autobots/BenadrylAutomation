@@ -30,53 +30,53 @@ public class HomePage extends BaseClass{
 	 * Locators
 	 */
 	@FindBy(css = "#file-871")
-	WebElement bannerImg;
+	private WebElement bannerImg;
 
 	@FindBy(xpath = "//a[@class='btn btn-secondary-inverted']")
-	WebElement learnMoreBtn;
+	private WebElement learnMoreBtn;
 
 	@FindBy(css = "h1#content-main")
-	WebElement bannerHeading;
+	private WebElement bannerHeading;
 
 	@FindBy(xpath = "//p//a[@href='/products']")
-	WebElement allPdctBtn;
+	private WebElement allPdctBtn;
 
 	@FindBy(xpath = "(//span[@class='h2'])[1]")
-	WebElement bestSellerHeading;
+	private WebElement bestSellerHeading;
 
 	@FindBy(css = "div.related-content-carousel-container-slick")
-	WebElement bestSellerPdct;
+	private WebElement bestSellerPdct;
 
 	@FindBy(xpath = "(//span[@class='h2'])[2]")
-	WebElement relatedContent;
+	private WebElement relatedContent;
 
 	@FindBy(xpath = "(//h2)[5]")
-	WebElement moreOnSectn;
+	private WebElement moreOnSectn;
 	
 	@FindBy(xpath = "//button[@id='onetrust-accept-btn-handler']")
-	WebElement closePrivacyBtn;
+	private WebElement closePrivacyBtn;
 
-	public WebElement getSection(String index) {
+	private WebElement getSection(String index) {
 		return driver.findElement(By.xpath("(//h2)['" + index + "']"));
 	}
 
-	public WebElement getRelatedContentCard(String index) {
+	private WebElement getRelatedContentCard(String index) {
 		return driver.findElement(By.xpath("(//a[normalize-space()='READ MORE'])['" + index + "']"));
 	}
 
-	public WebElement getPdct(String productName) {
+	private WebElement getPdct(String productName) {
 		return driver.findElement(By.xpath("//img[@alt='" + productName + "']"));
 	}
 
-	public WebElement getAllergiesSection(String name) {
+	private WebElement getAllergiesSection(String name) {
 		return driver.findElement(By.xpath("//h2[normalize-space()='" + name + "']"));
 	}
 
-	public WebElement getAllergiesLearnMore(String sectionBtn) {
+	private WebElement getAllergiesLearnMore(String sectionBtn) {
 		return driver.findElement(By.xpath("//a[@href='" + sectionBtn + "'][normalize-space()='LEARN MORE']"));
 	}
 
-	public WebElement moreOnSectn(String name) {
+	private WebElement moreOnSectn(String name) {
 		return driver.findElement(By.xpath("//a[normalize-space()='" + name + "']"));
 	}
 	

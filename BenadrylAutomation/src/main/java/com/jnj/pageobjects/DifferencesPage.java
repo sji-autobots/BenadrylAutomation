@@ -29,40 +29,40 @@ public class DifferencesPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "//h1[@id='content-main']")
-	WebElement bannerTitle;
+	private WebElement bannerTitle;
 
 	@FindBy(xpath = "//span[normalize-space()='Related Content']")
-	WebElement relatedContentHeader;
+	private WebElement relatedContentHeader;
 
 	@FindBy(xpath = "(//div[@class='ps-product-details']/h2)[1]")
-	WebElement productNameOnBuyNow;
+	private WebElement productNameOnBuyNow;
 
-	public WebElement getHeadings(String value) {
+	private WebElement getHeadings(String value) {
 		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
 	}
 
-	public WebElement links(String value) {
+	private WebElement links(String value) {
 		return driver.findElement(By.xpath("//a[contains(text(),'" + value + "')]"));
 	}
 
-	public WebElement articleName(String value) {
+	private WebElement articleName(String value) {
 		return driver.findElement(By.xpath("//span[contains(text(),'" + value + "')]"));
 	}
 
-	public WebElement readMoreLink(String value) {
+	private WebElement readMoreLink(String value) {
 		return driver.findElement(
 				By.xpath("//a[@href='/benadryl-difference/" + value + "'][normalize-space()='READ MORE']"));
 	}
 
-	public WebElement productName(String value) {
+	private WebElement productName(String value) {
 		return driver.findElement(By.xpath("//span[@class='node__title']//a[@href='/products/" + value + "']"));
 	}
 
-	public WebElement buyNowBtn(String value) {
+	private WebElement buyNowBtn(String value) {
 		return driver.findElement(By.xpath("//a[@href='https://www.benadryl.com/products/" + value + "']"));
 	}
 
-	public WebElement getAges(String value) {
+	private WebElement getAges(String value) {
 		return driver.findElement(By.xpath("//div[@about='/products/" + value + "']/div/div/div[3]"));
 	}
 
