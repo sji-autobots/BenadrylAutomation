@@ -61,7 +61,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 3, dataProvider = "symptoms", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 4, dataProvider = "symptoms", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifySymptomCasuses(String testcase, String execution, String menu, String subMenu, String symptom, String cause, String description) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -75,7 +75,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 4, dataProvider = "links", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 5, dataProvider = "links", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifylinksUnder(String testcase, String execution, String menu, String subMenu, String linktext, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -89,7 +89,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 5, dataProvider = "headings", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 6, dataProvider = "headings", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifyHeading(String testcase, String execution, String menu, String subMenu, String heading) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
@@ -103,7 +103,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 6, dataProvider = "relatedProduct", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 7, dataProvider = "relatedProduct", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifyRelatedProduct(String testcase, String execution, String menu, String subMenu, String head,
 			String product, String expectedUrl, String ages, String expectedProductName) throws InterruptedException {
 		test = test.createNode(testcase);
@@ -118,7 +118,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 7, dataProvider = "relatedContent", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 8, dataProvider = "relatedContent", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifyRelatedArticle(String testcase, String execution, String menu, String subMenu, String head,
 			String title, String readMore, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
@@ -133,7 +133,7 @@ public class BenadrylUsesTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority = 8, dataProvider = "references", dataProviderClass = BenadrylUsesProvider.class)
+	@Test(priority = 9, dataProvider = "references", dataProviderClass = BenadrylUsesProvider.class)
 	public void USES_verifyReferences(String testcase, String execution, String menu, String subMenu, String head,
 			String refText, String link, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);

@@ -7,7 +7,6 @@ package com.jnj.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -16,14 +15,12 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class BenadrylUsesPage extends BaseClass {
-	Actions actions;
 
 	/**
 	 * Constructor
 	 */
 	public BenadrylUsesPage() {
 		PageFactory.initElements(driver, this);
-		actions = new Actions(driver);
 	}
 
 	/**
@@ -184,7 +181,6 @@ public class BenadrylUsesPage extends BaseClass {
 	public void verifySymptomCasuses(String symptom, String cause, String description) {
 		String actualDesc;
 		WebElement ele = null;
-
 		switch (symptom) {
 		case "Itchy Skin":
 			ele = this.getItchySkinSympEle(cause);
@@ -257,7 +253,6 @@ public class BenadrylUsesPage extends BaseClass {
 			Action.explicitWait(articleName(article), 30);
 			String actualArticle = articleName(article).getText();
 			Action.printAndAssert(actualArticle, article);
-			Action.explicitWait(readMoreLink(readMore), 30);
 			Action.performActionwithExtentInfoLog(readMoreLink(readMore), "click",
 					"Clicking on : " + readMoreLink(readMore).getText());
 			Action.verifyPageUrl(expectedUrl);
