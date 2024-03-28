@@ -16,12 +16,12 @@ public class WhereToBuyTest extends BaseClass{
 	}
 
 	@Test(priority = 1, dataProvider = "headerVerification", dataProviderClass = WhereToBuyProvider.class)
-	public void HEADER_verifyMainMenuLink(String testcase, String execution, String expectedHeader) {
+	public void HEADER_verifyMainMenuLink(String testcase, String execution, String expectedUrl, String expectedHeader) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
-			
+			header.verifyWhereToBuyLink(expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
