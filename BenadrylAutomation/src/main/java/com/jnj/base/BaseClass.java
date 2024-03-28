@@ -30,6 +30,7 @@ import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.SafetyInformationPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.pageobjects.SitemapPage;
+import com.jnj.pageobjects.WhereToBuyPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -52,6 +53,7 @@ public class BaseClass {
 	public static OurIngredientsPage ingredient;
 	public static SafetyInformationPage safety;
 	public static SitemapPage sitemap;
+	public static WhereToBuyPage wtb;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -94,6 +96,7 @@ public class BaseClass {
 		ingredient = new OurIngredientsPage();
 		safety = new SafetyInformationPage();
 		sitemap = new SitemapPage();
+		wtb = new WhereToBuyPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
