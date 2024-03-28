@@ -53,7 +53,7 @@ public class HomePage extends BaseClass{
 	@FindBy(xpath = "(//h2)[5]")
 	private WebElement moreOnSectn;
 	
-	@FindBy(xpath = "//div[@id='onetrust-close-btn-container']")
+	@FindBy(xpath = "//button[@id='onetrust-accept-btn-handler']")
 	private WebElement closePrivacyBtn;
 
 	private WebElement getSection(String index) {
@@ -88,7 +88,7 @@ public class HomePage extends BaseClass{
 		boolean eleDisplayed = closePrivacyBtn.isDisplayed();
 		if(eleDisplayed) {
 			extentPassLog("Privacy pop-up displayed : ", true);
-			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Close' button");
+			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Accept' button");
 		} else extentFailLog("Privacy pop-up displayed : ", false);
 	}
 	

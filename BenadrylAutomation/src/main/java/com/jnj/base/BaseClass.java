@@ -22,6 +22,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
 import com.jnj.pageobjects.ComparePage;
+import com.jnj.pageobjects.ContactUsPage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
@@ -52,6 +53,7 @@ public class BaseClass {
 	public static OurIngredientsPage ingredient;
 	public static SafetyInformationPage safety;
 	public static SitemapPage sitemap;
+	public static ContactUsPage contact;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -94,6 +96,7 @@ public class BaseClass {
 		ingredient = new OurIngredientsPage();
 		safety = new SafetyInformationPage();
 		sitemap = new SitemapPage();
+		contact = new ContactUsPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);
