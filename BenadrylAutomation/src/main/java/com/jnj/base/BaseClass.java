@@ -21,6 +21,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.jnj.actions.Action;
+import com.jnj.pageobjects.BenadrylUsesPage;
 import com.jnj.pageobjects.ComparePage;
 import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.FooterPage;
@@ -53,6 +54,7 @@ public class BaseClass {
 	public static OurIngredientsPage ingredient;
 	public static SafetyInformationPage safety;
 	public static SitemapPage sitemap;
+	public static BenadrylUsesPage uses;
 	public static WhereToBuyPage wtb;
 
 	@BeforeSuite
@@ -96,6 +98,7 @@ public class BaseClass {
 		ingredient = new OurIngredientsPage();
 		safety = new SafetyInformationPage();
 		sitemap = new SitemapPage();
+		uses = new BenadrylUsesPage();
 		wtb = new WhereToBuyPage();
 
 		driver.manage().window().maximize();
