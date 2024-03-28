@@ -88,7 +88,8 @@ public class HomePage extends BaseClass{
 		boolean eleDisplayed = closePrivacyBtn.isDisplayed();
 		if(eleDisplayed) {
 			extentPassLog("Privacy pop-up displayed : ", true);
-			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Accept' button");
+			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Close' button");
+			Action.explicitWaitForElementToDisappear(closePrivacyBtn, 10);
 		} else extentFailLog("Privacy pop-up displayed : ", false);
 	}
 	

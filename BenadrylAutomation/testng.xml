@@ -15,6 +15,7 @@
 			<class name="com.jnj.testcases.OurIngredientsPageTest" />
 			<class name="com.jnj.testcases.SafetyInformationPageTest" />
 			<class name="com.jnj.testcases.SitemapPageTest" />
+			<class name="com.jnj.testcases.BenadrylUsesTest" />
 			<class name="com.jnj.testcases.ContactUsPageTest" />
 		</classes>
 	</test>
