@@ -16,14 +16,11 @@ import com.jnj.base.BaseClass;
 
 public class SitemapPage extends BaseClass {
 
-	Actions actions;
-
 	/**
 	 * Constructor
 	 */
 	public SitemapPage() {
 		PageFactory.initElements(driver, this);
-		actions = new Actions(driver);
 	}
 
 	/**

@@ -77,4 +77,9 @@ public class ProductPageProvider {
     public Object[][] jumpToReviews() throws IOException {
         return provider.getData(dataPath, "jumpToReviews");
     }
+
+    @org.testng.annotations.DataProvider(name = "jumpTo")
+    public Object[][] jumpTo() throws IOException {
+        return provider.getData(dataPath, "jumpTo");
+    }
 }
