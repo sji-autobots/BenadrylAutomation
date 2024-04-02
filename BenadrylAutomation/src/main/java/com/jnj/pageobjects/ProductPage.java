@@ -94,198 +94,6 @@ public class ProductPage extends BaseClass {
 
 	@FindBy(css = "#bv-product-reviews")
 	private WebElement reviewsSection;
-
-	/*
-	 * public WebElement getJumpToHeadings(String headingText) { return
-	 * driver.findElement(By.xpath(
-	 * "//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
-	 * }
-	 */
-
-	/**
-	 * Visits a product page from the homepage.
-	 */
-	public void visitPDP() {
-		Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
-		Action.performActionwithExtentInfoLog(prodTileTitle, "click", "Clicking on : " + prodTileTitle.getText());
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies if the image of the
-	 * product is visible.
-	 */
-	public void verifyProdImage() {
-		this.visitPDP();
-		extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, prodImg));
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the title of the
-	 * product.
-	 */
-	public void verifyProdTitle() {
-		this.visitPDP();
-		extentInfoLog("Title is displayed : ", Action.isDisplayed(driver, prodTitle));
-		extentInfoLog("Product title verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies if the rating of the
-	 * product is visible.
-	 */
-	public void verifyProdRating() {
-		this.visitPDP();
-		extentInfoLog("Rating is displayed : ", Action.isDisplayed(driver, prodRating));
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies if the overview of
-	 * the product is visible.
-	 */
-	public void verifyProdOverview() {
-		this.visitPDP();
-		extentInfoLog("Overview is displayed : ", Action.isDisplayed(driver, prodOverview));
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the buttons.
-	 */
-	public void verifyButtons(String expectedText) {
-		if (expectedText.contains("Write a review")) {
-			this.verifyWriteAReviewBtn(expectedText);
-		} else {
-			this.verifyBuyNowBtn(expectedText);
-		}
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the Write a Review
-	 * button.
-	 */
-	public void verifyWriteAReviewBtn(String expectedText) {
-		this.visitPDP();
-		extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, writeAReviewBtn));
-		String actualText = writeAReviewBtn.getText();
-		Assert.assertEquals(actualText, expectedText);
-		Action.performActionwithExtentInfoLog(writeAReviewBtn, "click", "Clicking on : " + actualText);
-		extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, writeAReviewModal));
-		extentInfoLog("Write a Review button verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the Buy Now button.
-	 */
-	public void verifyBuyNowBtn(String expectedText) {
-		this.visitPDP();
-		extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, buyNowBtn));
-		String actualText = buyNowBtn.getText();
-		Assert.assertEquals(actualText, expectedText);
-		Action.performActionwithExtentInfoLog(buyNowBtn, "click", "Clicking on : " + actualText);
-		extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, buyNowModal));
-		extentInfoLog("Buy Now button verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToOverview(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = prodOverviewHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, prodOverview));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToDirections(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = directionHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, directionSection));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToIngredients(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = ingredientsHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, ingredientsSection));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToUsedFor(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = usedForHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, usedForSection));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToWarnings(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = warningsHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, warningsSection));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToFAQs(String jumpToHeading, String sectionHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		String actualHeadingText = faqsHeading.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, faqsSection));
-		Assert.assertEquals(actualHeadingText, sectionHeading);
-		extentInfoLog(jumpToHeadingText + "jump heading verified");
-	}
-
-	/**
-	 * Visits a product page from the homepage. Then, verifies the jump to heading.
-	 */
-	public void verifyJumpToReview(String jumpToHeading) {
-		this.visitPDP();
-		WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
-		String jumpToHeadingText = jumpToHead.getText();
-		Action.scrollUntilElementVisible(jumpToTitle);
-		Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
-		extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, reviewsSection));
-	}
 	
 	/**
 	 * Returns the WebElement of a 'Jump To' heading based on its text.
@@ -293,26 +101,108 @@ public class ProductPage extends BaseClass {
 	 * @param headingText The text of the 'Jump To' heading.
 	 * @return WebElement The WebElement of the specified 'Jump To' heading.
 	 */
-	private WebElement getJumpToHeadings(String headingText) {
-	    return driver.findElement(By.xpath("//a[text()='" + headingText + "']"));
+	public WebElement getJumpToHeadings(String headingText) { 
+		 return	 driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
+	}
+	
+	/**
+	 * Navigates to a product detail page from the homepage by clicking on the product header menu 
+	 * and a specific product title.
+	 */
+	public void visitPDP() {
+	    Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
+	    Action.performActionwithExtentInfoLog(prodTileTitle, "click", "Clicking on : " + prodTileTitle.getText());
+	}
+
+	/**
+	 * Verifies that the product image is visible on the product detail page.
+	 */
+	public void verifyProdImage() {
+	    this.visitPDP();
+	    extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, prodImg));
+	}
+
+	/**
+	 * Verifies that the product title is visible on the product detail page.
+	 */
+	public void verifyProdTitle() {
+	    this.visitPDP();
+	    extentInfoLog("Title is displayed : ", Action.isDisplayed(driver, prodTitle));
+	    extentInfoLog("Product title verified");
+	}
+
+	/**
+	 * Verifies that the product rating is visible on the product detail page.
+	 */
+	public void verifyProdRating() {
+	    this.visitPDP();
+	    extentInfoLog("Rating is displayed : ", Action.isDisplayed(driver, prodRating));
+	}
+
+	/**
+	 * Verifies that the product overview section is visible on the product detail page.
+	 */
+	public void verifyProdOverview() {
+	    this.visitPDP();
+	    extentInfoLog("Overview is displayed : ", Action.isDisplayed(driver, prodOverview));
+	}
+
+	/**
+	 * Verifies the presence and functionality of buttons on the product detail page, specifically 'Write a review' and 'Buy Now'.
+	 * @param expectedText The text expected to be found on the button being verified.
+	 */
+	public void verifyButtons(String expectedText) {
+	    if (expectedText.contains("Write a review")) {
+	        this.verifyWriteAReviewBtn(expectedText);
+	    } else {
+	        this.verifyBuyNowBtn(expectedText);
+	    }
+	}
+
+	/**
+	 * Verifies the 'Write a Review' button's presence, text, and click functionality on the product detail page.
+	 * @param expectedText The expected text to be displayed on the 'Write a Review' button.
+	 */
+	public void verifyWriteAReviewBtn(String expectedText) {
+	    this.visitPDP();
+	    extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, writeAReviewBtn));
+	    String actualText = writeAReviewBtn.getText();
+	    Assert.assertEquals(actualText, expectedText);
+	    Action.performActionwithExtentInfoLog(writeAReviewBtn, "click", "Clicking on : " + actualText);
+	    extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, writeAReviewModal));
+	    extentInfoLog("Write a Review button verified");
+	}
+
+	/**
+	 * Verifies the 'Buy Now' button's presence, text, and click functionality on the product detail page.
+	 * @param expectedText The expected text to be displayed on the 'Buy Now' button.
+	 */
+	public void verifyBuyNowBtn(String expectedText) {
+	    this.visitPDP();
+	    extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, buyNowBtn));
+	    String actualText = buyNowBtn.getText();
+	    Assert.assertEquals(actualText, expectedText);
+	    Action.performActionwithExtentInfoLog(buyNowBtn, "click", "Clicking on : " + actualText);
+	    extentInfoLog("Modal is displayed : ", Action.isDisplayed(driver, buyNowModal));
+	    extentInfoLog("Buy Now button verified");
 	}
 	
 	/**
 	 * Verifies the jump to section by clicking on the 'Jump To' heading and validating the resulting section heading.
 	 *
-	 * @param jumpToHeading The 'Jump To' heading to interact with.
-	 * @param sectionHeading The expected heading text to verify after the jump.
-	 * @param sectionType The type of section (e.g., Overview, Directions, etc.) to handle specific logic.
+	 * @param jumpToHeading The 'Jump To' heading to interact with
+	 * @param sectionHeading The expected heading text to verify afterwards
 	 */
-	public void verifyJumpToSection(String jumpToHeading, String sectionHeading, String sectionType) {
+	public void verifyJumpToSection(String jumpToHeading, String sectionHeading) {
+		this.visitPDP();
 	    WebElement jumpToHead = getJumpToHeadings(jumpToHeading);
 	    String jumpToHeadingText = jumpToHead.getText();
 	    WebElement actualHeadingElement;
 
-	    Action.scrollUntilElementVisible(jumpToTitle);
+		Action.scrollUntilElementVisible(jumpToTitle);
 	    Action.performActionwithExtentInfoLog(jumpToHead, "click", "Clicking on : " + jumpToHeadingText);
 
-	    switch (sectionType.toLowerCase()) {
+	    switch (jumpToHeading.toLowerCase()) {
 	        case "overview":
 	            actualHeadingElement = prodOverviewHeading;
 	            break;
@@ -332,17 +222,16 @@ public class ProductPage extends BaseClass {
 	            actualHeadingElement = faqsHeading;
 	            break;
 	        case "reviews":
-	            // Assuming reviewsSection is a WebElement that represents the reviews section
 	            actualHeadingElement = reviewsSection;
 	            extentInfoLog("Section is displayed: ", Action.isDisplayed(driver, actualHeadingElement));
-	            return; // Exit the method as there's no heading text to compare for reviews.
+	            return;
 	        default:
-	            throw new IllegalArgumentException("Invalid section type provided: " + sectionType);
+	            throw new IllegalArgumentException("Invalid section type provided: " + jumpToHeading);
 	    }
 
 	    String actualHeadingText = actualHeadingElement.getText();
 	    extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, actualHeadingElement));
-	    Assert.assertEquals(actualHeadingText, sectionHeading, "Expected and actual section headings do not match.");
-	    extentInfoLog(jumpToHeadingText + " jump heading verified");
+	    Action.printAndAssert(actualHeadingText, sectionHeading);
+	    extentInfoLog(jumpToHeadingText + " jump to heading verified");
 	}
 }

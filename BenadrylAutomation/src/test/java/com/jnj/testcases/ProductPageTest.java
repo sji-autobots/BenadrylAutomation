@@ -75,83 +75,12 @@ public class ProductPageTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 6, dataProvider = "jumpToOverview", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToOverview(String testcase, String execution, String jumpToHeading,
-			String sectionHeading) {
+	@Test(priority = 6, dataProvider = "jumpTo", dataProviderClass = ProductPageProvider.class)
+	public void PDP_verifyJumpToMenus(String testcase, String execution, String jumpToHeading, String sectionHeading) {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
-			pdp.verifyJumpToOverview(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 7, dataProvider = "jumpToDirections", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToDirections(String testcase, String execution, String jumpToHeading,
-			String sectionHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToDirections(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 8, dataProvider = "jumpToIngredients", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToIngredients(String testcase, String execution, String jumpToHeading,
-			String sectionHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToIngredients(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 9, dataProvider = "jumpToUsed", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToUsedFor(String testcase, String execution, String jumpToHeading,
-			String sectionHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToUsedFor(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 10, dataProvider = "jumpToWarnings", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToWarnings(String testcase, String execution, String jumpToHeading,
-			String sectionHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToWarnings(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 11, dataProvider = "jumpToFAQs", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToFAQs(String testcase, String execution, String jumpToHeading, String sectionHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToFAQs(jumpToHeading, sectionHeading);
-		} else {
-			throw new SkipException("Test skipped : " + testcase);
-		}
-	}
-
-	@Test(priority = 12, dataProvider = "jumpToReviews", dataProviderClass = ProductPageProvider.class)
-	public void PDP_verifyJumpToReview(String testcase, String execution, String jumpToHeading) {
-		test = test.createNode(testcase);
-		if (execution.equalsIgnoreCase(defaultFlag)) {
-			selectEnv(runOn);
-			pdp.verifyJumpToReview(jumpToHeading);
+			pdp.verifyJumpToSection(jumpToHeading, sectionHeading);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
