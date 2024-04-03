@@ -76,6 +76,10 @@ public class WhereToBuyPage extends BaseClass {
 		BaseClass.extentInfoLog("Succesfully verifed heading : " + actualText);
 	}
 
+	/**
+	 * Function to initiate product search
+	 * @param productName pass product name
+	 */
 	public void initiateProductSearch(String productName) {
 		Action.explicitWait(specificProductSearchBox, 10);
 		Action.performActionwithExtentInfoLog(headingText, "sendKeys", "Sending keys to product search", productName);
