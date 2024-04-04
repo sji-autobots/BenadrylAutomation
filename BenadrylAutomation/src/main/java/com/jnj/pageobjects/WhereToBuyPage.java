@@ -78,6 +78,7 @@ public class WhereToBuyPage extends BaseClass {
 
 	/**
 	 * Function to initiate product search
+	 * 
 	 * @param productName pass product name
 	 */
 	public void initiateProductSearch(String productName) {
@@ -106,7 +107,7 @@ public class WhereToBuyPage extends BaseClass {
 	}
 
 	/**
-	 * Function to veriy 'Category' and 'Size' dropdown are displayed
+	 * Function to verify 'Category' and 'Size' dropdown are displayed
 	 */
 	public void verifyCategoryAndSize() {
 		Assert.assertTrue(categoryDropdown.isDisplayed(), "Category dropdown not displayed");
