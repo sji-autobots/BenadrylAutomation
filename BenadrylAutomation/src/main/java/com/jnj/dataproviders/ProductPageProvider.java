@@ -18,6 +18,11 @@ public class ProductPageProvider {
 
     DataProvider provider = new DataProvider();
 
+    @org.testng.annotations.DataProvider(name = "prodPage")
+    public Object[][] prodPage() throws IOException {
+        return provider.getData(dataPath, "prodPage");
+    }
+
     @org.testng.annotations.DataProvider(name = "prodImg")
     public Object[][] prodImg() throws IOException {
         return provider.getData(dataPath, "prodImg");
