@@ -1,7 +1,8 @@
 /**
- * @author Rashi Tiwari
- * @date 21-March-24
+ * @author Vaibhav Nagvekar
+ * @date 02-April-24
  */
+
 package com.jnj.dataproviders;
 
 import java.io.IOException;
@@ -31,18 +32,23 @@ public class AllergiesProvider {
 		return provider.getData(dataPath, "allergyHeader");
 	}
 	
-	@org.testng.annotations.DataProvider(name = "allergyHeaderSecond")
-	public Object[][] allergyHeaderSecond() throws IOException {
-		return provider.getData(dataPath, "allergyHeaderSecond");
+	@org.testng.annotations.DataProvider(name = "links")
+	public Object[][] links() throws IOException {
+		return provider.getData(dataPath, "links");
 	}
 	
-	@org.testng.annotations.DataProvider(name = "relatedContent")
-	public Object[][] relatedContent() throws IOException {
-		return provider.getData(dataPath, "relatedContent");
+	@org.testng.annotations.DataProvider(name = "relatedArticles")
+	public Object[][] relatedArticles() throws IOException {
+		return provider.getData(dataPath, "relatedArticles");
 	}
 	
-	@org.testng.annotations.DataProvider(name = "relatedProduct")
-	public Object[][] relatedProduct() throws IOException {
-		return provider.getData(dataPath, "relatedProduct");
+	@org.testng.annotations.DataProvider(name = "relatedProducts")
+	public Object[][] relatedProducts() throws IOException {
+		return provider.getData(dataPath, "relatedProducts");
+	}
+	
+	@org.testng.annotations.DataProvider(name = "references")
+	public Object[][] references() throws IOException {
+		return provider.getData(dataPath, "references");
 	}
 }

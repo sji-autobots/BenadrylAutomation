@@ -33,6 +33,7 @@ import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.SafetyInformationPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.pageobjects.SitemapPage;
+import com.jnj.pageobjects.WhereToBuyPage;
 import com.jnj.utility.ExtentManager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -57,6 +58,7 @@ public class BaseClass {
 	public static SitemapPage sitemap;
 	public static BenadrylUsesPage uses;
 	public static ContactUsPage contact;
+	public static WhereToBuyPage wtb;
 	public static AllergiesPage allergies;
 
 	@BeforeSuite
@@ -102,6 +104,7 @@ public class BaseClass {
 		sitemap = new SitemapPage();
 		uses = new BenadrylUsesPage();
 		contact = new ContactUsPage();
+		wtb = new WhereToBuyPage();
 		allergies = new AllergiesPage();
 
 		driver.manage().window().maximize();

@@ -264,7 +264,7 @@ public class Action extends BaseClass {
 			if (flag) {
 				BaseClass.extentInfoLog(log, "");
 			} else {
-				BaseClass.extentInfoLog("Option not selected by VisibleText", "");
+				BaseClass.extentFailLog("Option not selected by VisibleText : ", visibletext);
 			}
 		}
 	}
@@ -1024,5 +1024,43 @@ public class Action extends BaseClass {
 	public static void hoverOverElement(WebDriver driver, WebElement element) throws InterruptedException {
 		Actions action = new Actions(driver);
 		action.moveToElement(element).perform();
+	}
+
+	/**
+	 * Function to wait until an element containing exact text appears on UI
+	 * 
+	 * @param element pass webelement
+	 * @param text    pass text to wait for
+	 * @param i       pass timout in milliseconds
+	 */
+	public static void waitForTextToAppear(WebElement element, String text, long i) {
+		BaseClass.extentInfoLog("Waiting for the following text to appear : ", text);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+	}
+
+	/**
+	 * Function to until an element containing partial text appears on UI
+	 * 
+	 * @param element pass webelement
+	 * @param text    pass text to wait for
+	 * @param i       pass timout in milliseconds
+	 */
+	public static void waitForElementToContainText(WebElement element, String text, long i) {
+		BaseClass.extentInfoLog("Waiting for the following text to appear : ", text);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+	}
+
+	/**
+	 * Function to wait until url contains the specified text
+	 * 
+	 * @param text pass text to wait for
+	 * @param i    pass timout in milliseconds
+	 */
+	public static void waitUntilUrlContains(String text, long i) {
+		BaseClass.extentInfoLog("Waiting for the url to contain : ", text);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+		wait.until(ExpectedConditions.urlContains(text));
 	}
 }

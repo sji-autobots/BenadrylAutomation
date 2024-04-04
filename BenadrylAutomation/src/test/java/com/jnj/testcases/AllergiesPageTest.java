@@ -1,7 +1,8 @@
 /**
- * @author Rashi Tiwari
- * @date 21-March-24
+ * @author Vaibhav Nagvekar
+ * @date 02-April-24
  */
+
 package com.jnj.testcases;
 
 import org.testng.SkipException;
@@ -13,6 +14,7 @@ import com.jnj.base.BaseClass;
 import com.jnj.dataproviders.AllergiesProvider;
 
 public class AllergiesPageTest extends BaseClass {
+	
 	@BeforeMethod
 	public void setup() throws InterruptedException {
 		launchApplication();
@@ -34,13 +36,13 @@ public class AllergiesPageTest extends BaseClass {
 
 	@Test(priority = 2, dataProvider = "allergyBanner", dataProviderClass = AllergiesProvider.class)
 	public void ALLERGIES_verifyBanner(String testcase, String execution, String menu, String subMenu,
-			String expectedHeading) throws InterruptedException {
+			String expectedHeading, String expectedDesc) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyBanner(expectedHeading);
+			allergies.verifyBanner(expectedHeading,expectedDesc);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
@@ -54,54 +56,64 @@ public class AllergiesPageTest extends BaseClass {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyHeaderScrolling(name, heading);
+			allergies.verifyHeader(name, heading);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-
-	@Test(priority = 4, dataProvider = "allergyHeaderSecond", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifySecondHeader(String testcase, String execution, String menu, String subMenu,
-			String name, String headingScroll) throws InterruptedException {
+	
+	@Test(priority = 4, dataProvider = "links", dataProviderClass = AllergiesProvider.class)
+	public void ALLERGIES_verifyLinks(String testcase, String execution, String menu, String subMenu, String name, String link, String expectedUrl) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifySecondHeaderScrolling(name, headingScroll);
+			allergies.verifyLinks(name,link,expectedUrl);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
 
-	@Test(priority = 5, dataProvider = "relatedContent", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyRelatedContentCard(String testcase, String execution, String menu, String subMenu,
-			String index) throws InterruptedException {
+	@Test(priority = 5, dataProvider = "relatedArticles", dataProviderClass = AllergiesProvider.class)
+	public void ALLERGIES_verifyRelatedArticles(String testcase, String execution, String menu, String subMenu, String articles, String expectedArticleName) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyRelatedContent(index);
+			allergies.verifyArticles(articles, expectedArticleName);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-
-	@Test(priority = 6, dataProvider = "relatedProduct", dataProviderClass = AllergiesProvider.class)
-	public void ALLERGIES_verifyRelatedProduct(String testcase, String execution, String menu, String subMenu)
-			throws InterruptedException {
+	
+	@Test(priority = 6, dataProvider = "relatedProducts", dataProviderClass = AllergiesProvider.class)
+	public void ALLERGIES_verifyRelatedProducts(String testcase, String execution, String menu, String subMenu, String head, String product, String expectedUrl, String ages, String expectedProductName) throws InterruptedException {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
 			header.navigateSubMenuLink(menu, subMenu);
-			allergies.verifyRelatedProduct();
+			compare.verifyRelatedProducts(head, product, expectedUrl, ages, expectedProductName);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
 		}
 	}
-
+	
+	@Test(priority = 7, dataProvider = "references", dataProviderClass = AllergiesProvider.class)
+	public void ALLERGIES_verifyReferenceLinks(String testcase, String execution, String menu, String subMenu, String refLinks, String expectedUrl) throws InterruptedException {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			home.closePrivacyPopup();
+			header.navigateSubMenuLink(menu, subMenu);
+			allergies.verifyReference(refLinks, expectedUrl);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();

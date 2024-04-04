@@ -1,29 +1,25 @@
 /**
- * @author Rashi Tiwari
- * @date 21-March-24
+ * @author Vaibhav Nagvekar
+ * @date 02-April-24
  */
 
 package com.jnj.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class AllergiesPage extends BaseClass {
-	Actions actions;
 
 	/**
 	 * Constructor
 	 */
 	public AllergiesPage() {
 		PageFactory.initElements(driver, this);
-		actions = new Actions(driver);
 	}
 
 	/**
@@ -35,26 +31,50 @@ public class AllergiesPage extends BaseClass {
 	@FindBy(css = "h1#content-main")
 	private WebElement bannerHeading;
 
+	@FindBy(xpath = "//p[contains(text(),'Allergy sufferers have immune systems that mean we')]")
+	private WebElement bannerDescription;
+
 	@FindBy(css = "div.jump-to-wrapper")
 	private WebElement headerBanner;
 
 	@FindBy(css = "div.slick-list.draggable")
 	private WebElement relatedProduct;
 
+	@FindBy(xpath = "//a[normalize-space()='See All Allergy Articles']")
+	private WebElement seeAllAllergyArticles;
+
+	@FindBy(xpath = "//h1[@id='content-main']")
+	private WebElement articleTitle;
+
+	@FindBy(xpath = "//h2[normalize-space()='References']")
+	private WebElement referenceHeader;
+
 	private WebElement getAllergiesHeader(String name) {
 		return driver.findElement(By.xpath("//a[normalize-space()='" + name + "']"));
 	}
 
-	private WebElement getAllergiesScroll(String heading) {
-		return driver.findElement(By.xpath("//h3[normalize-space()='" + heading + "']"));
+	private WebElement getAllergiesScroll(String value) {
+		return driver.findElement(By.xpath("//h3[normalize-space()='" + value + "']"));
 	}
 
-	private WebElement getAllergyScroll(String headingScroll) {
-		return driver.findElement(By.xpath("//h2[normalize-space()='" + headingScroll + "']"));
+	private WebElement getAllergyScroll(String value) {
+		return driver.findElement(By.xpath("//h2[normalize-space()='" + value + "']"));
 	}
 
-	private WebElement getRelatedArticleCard(String index) {
-		return driver.findElement(By.xpath("(//div[@class='taco-inner'])['" + index + "']"));
+	private WebElement getRelated(String value) {
+		return driver.findElement(By.xpath("//span[normalize-space()='" + value + "']"));
+	}
+
+	private WebElement readMoreLink(String value) {
+		return driver.findElement(By.xpath("//span[normalize-space()='" + value + "']/../p[2]/a"));
+	}
+
+	private WebElement refLinks(String value) {
+		return driver.findElement(By.xpath("(//li[contains(text(),'" + value + "')]/a)[1]"));
+	}
+
+	private WebElement getLink(String value) {
+		return driver.findElement(By.partialLinkText(value));
 	}
 
 	/**
@@ -70,59 +90,93 @@ public class AllergiesPage extends BaseClass {
 	}
 
 	/**
-	 * Verifies if the banner is displayed and checks if the heading matches the
-	 * expected heading.
+	 * Verifies if the banner is displayed and checks if the heading and description
+	 * matches the expected result.
 	 * 
-	 * @param expectedHeading The expected heading text of the banner.
+	 * @param expectedHeading pass expected heading
+	 * @param expectedDesc    pass expected expected description
 	 */
-	public void verifyBanner(String expectedHeading) {
+	public void verifyBanner(String expectedHeading, String expectedDesc) {
 		extentInfoLog("Banner is displayed : ", Action.isDisplayed(driver, bannerImg));
 		String actualHeading = bannerHeading.getText();
-		Assert.assertEquals(actualHeading, expectedHeading);
-		extentInfoLog("Heading is displayed : ", actualHeading);
+		Action.printAndAssert(expectedHeading, actualHeading);
+		String actualDesc = bannerDescription.getText();
+		Action.printAndAssert(actualDesc, expectedDesc);
 	}
 
 	/**
 	 * Verifies if the header banner is displayed, clicks on the specified header
 	 * element, and checks if the content scrolls to the specified heading.
 	 * 
-	 * @param name    The name of the header element to click on.
-	 * @param heading The heading text to check if content scrolls to.
+	 * @param name            pass jumpto link name
+	 * @param expectedHeading pass expected heading
 	 */
-	public void verifyHeaderScrolling(String name, String heading) {
-		extentInfoLog("Heading banner is displayed : ", Action.isDisplayed(driver, headerBanner));
-		Action.performActionwithExtentInfoLog(this.getAllergiesHeader(name), "click",
-				"Clicking on : " + getAllergiesHeader(name).getText());
-		extentInfoLog("Content Scrolled to : ", Action.isDisplayed(driver, getAllergiesScroll(heading)));
+	public void verifyHeader(String name, String expectedHeading) {
+		if (name.equalsIgnoreCase("CAUSES") || name.equalsIgnoreCase("ALLERGY SYMPTOMS")) {
+			Action.performActionwithExtentInfoLog(getAllergiesHeader(name), "click",
+					"Clicking on : " + getAllergiesHeader(name).getText());
+			String actualHeadeing = getAllergyScroll(expectedHeading).getText();
+			Action.printAndAssert(actualHeadeing, expectedHeading);
+		} else if (name.equalsIgnoreCase("POLLEN ALLERGIES") || name.equalsIgnoreCase("DUST ALLERGIES")
+				|| name.equalsIgnoreCase("PET ALLERGIES")) {
+			Action.performActionwithExtentInfoLog(getAllergiesHeader(name), "click",
+					"Clicking on : " + getAllergiesHeader(name).getText());
+			String actualHeadeing = getAllergiesScroll(expectedHeading).getText();
+			Action.printAndAssert(actualHeadeing, expectedHeading);
+		} else {
+			Action.performActionwithExtentInfoLog(getAllergiesHeader(name), "click",
+					"Clicking on : " + getAllergiesHeader(name).getText());
+			String actualHeadeing = getRelated(expectedHeading).getText();
+			Action.printAndAssert(actualHeadeing, expectedHeading);
+		}
 	}
 
 	/**
-	 * Verifies if the header banner is displayed, clicks on the specified header
-	 * element, and checks if the content scrolls to the specified heading.
+	 * Function to verify the links present on the allergies page
 	 * 
-	 * @param name    The name of the header element to click on.
-	 * @param heading The heading text to check if content scrolls to.
+	 * @param jumpToName            pass jump to link name
+	 * @param link pass link
+	 * @param expectedUrl pass expected url
 	 */
-	public void verifySecondHeaderScrolling(String name, String headingScroll) {
-		extentInfoLog("Heading banner is displayed : ", Action.isDisplayed(driver, headerBanner));
-		Action.performActionwithExtentInfoLog(this.getAllergiesHeader(name), "click",
-				"Clicking on : " + getAllergiesHeader(name).getText());
-		extentInfoLog("Content Scrolled to : ", Action.isDisplayed(driver, getAllergyScroll(headingScroll)));
+	public void verifyLinks(String jumpToName, String link, String expectedUrl) {
+		Action.performActionwithExtentInfoLog(getAllergiesHeader(jumpToName), "click",
+				"Clicking on : " + getAllergiesHeader(jumpToName).getText());
+		Action.waitFor(2000);
+		Action.performActionwithExtentInfoLog(getLink(link), "click", "Clicking on : " + getLink(link).getText());
+		//Action.waitFor(2000);
+		Action.verifyPageUrl(expectedUrl);
 	}
 
 	/**
-	 * Verifies if the related content card is displayed for the specified index.
+	 * Function to verify the links present on the allergies page
 	 * 
-	 * @param index The index of the related content card to verify.
+	 * @param jumpToName            pass jump to link name
+	 * @param link pass link
+	 * @param expectedUrl pass expected url
 	 */
-	public void verifyRelatedContent(String index) {
-		extentInfoLog("Content card is displayed : ", Action.isDisplayed(driver, getRelatedArticleCard(index)));
+	public void verifyArticles(String article, String expectedArticleName) {
+		Action.performActionwithExtentInfoLog(seeAllAllergyArticles, "click",
+				"Clicking on : " + seeAllAllergyArticles.getText());
+		Action.explicitWaitForElementTobeclickable(readMoreLink(article), 30);
+		Action.performActionwithExtentInfoLog(readMoreLink(article), "click",
+				"Clicking on : " + readMoreLink(article).getText());
+		String actualArticleName = articleTitle.getText();
+		Action.printAndAssert(actualArticleName, expectedArticleName);
 	}
 
 	/**
-	 * Verifies if the related product is displayed.
+	 * Function to verify references links
+	 * 
+	 * @param ref pass references link
+	 * @param expectedUrl pass expected url
 	 */
-	public void verifyRelatedProduct() {
-		extentInfoLog("Related Product is displayed : ", Action.isDisplayed(driver, relatedProduct));
+	public void verifyReference(String ref, String expectedUrl) {
+		String actualHeader = referenceHeader.getText();
+		extentInfoLog("Header displayed : " + actualHeader);
+		Action.explicitWaitForElementTobeclickable(refLinks(ref), 30);
+		Action.performActionwithExtentInfoLog(refLinks(ref), "click", "Clicking on : " + refLinks(ref).getText());
+		Action.switchToNewWindow(driver);
+		String actualUrl = driver.getCurrentUrl();
+		Action.printAndAssert(actualUrl, expectedUrl);
 	}
 }
