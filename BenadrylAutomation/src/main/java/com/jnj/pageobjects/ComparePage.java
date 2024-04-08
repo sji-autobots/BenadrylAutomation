@@ -7,6 +7,7 @@ package com.jnj.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,12 +15,14 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class ComparePage extends BaseClass {
+	Actions actions;
 
 	/**
 	 * Constructor
 	 */
 	public ComparePage() {
 		PageFactory.initElements(driver, this);
+		actions = new Actions(driver);
 	}
 
 	/**

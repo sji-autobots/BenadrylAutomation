@@ -7,6 +7,7 @@ package com.jnj.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -15,6 +16,8 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class SignUpPage extends BaseClass {
+
+	Actions actions;
 
 	/**
 	 * Constructor
@@ -71,7 +74,7 @@ public class SignUpPage extends BaseClass {
 			Assert.fail("Logo not displayed");
 		}
 	}
-
+	
 	/**
 	 * Function to verify links on signup pop-up
 	 * 
@@ -82,6 +85,7 @@ public class SignUpPage extends BaseClass {
 	 * @param key        pass keyword
 	 * @param validation pass validation message
 	 */
+
 	public void EnterNameAndEmail(String fnameValue, String fname, String emailValue, String email, String key,
 			String validation) {
 		try {
