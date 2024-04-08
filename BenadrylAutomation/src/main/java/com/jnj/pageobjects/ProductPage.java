@@ -54,7 +54,7 @@ public class ProductPage extends BaseClass {
 	@FindBy(css = ".zZXQY")
 	private WebElement writeAReviewModal;
 
-	@FindBy(xpath = "//div[@id='mini-panel-product_header']//button[@aria-label='Find where to buy this product']")
+	@FindBy(xpath = "(//button[@aria-label='Find where to buy this product'])[1]")
 	private WebElement buyNowBtn;
 
 	@FindBy(css = ".ps-wtb")
@@ -110,7 +110,7 @@ public class ProductPage extends BaseClass {
 	 */
 	public WebElement getProductName(String path) { 
 		 return	 driver.findElement(By.xpath("//span[@class='node__title']//a[@href='/products/" + path + "']"));
-	}
+	}	
 	
 	/**
 	 * Returns the WebElement of a 'Jump To' heading based on its text.
@@ -154,7 +154,6 @@ public class ProductPage extends BaseClass {
 	 * Verifies that the product image is visible on the product detail page.
 	 */
 	public void verifyProdImage() {
-//	    this.visitPDP();
 	    extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, prodImg));
 	}
 
@@ -226,11 +225,11 @@ public class ProductPage extends BaseClass {
 	    this.visitPDP();
 	    extentInfoLog("Button is displayed : ", Action.isDisplayed(driver, buyNowBtn));
 	    String actualBtnText = buyNowBtn.getText();
-	    String actualModalText = buyNowModalHeading.getText();
 	    Action.printAndAssert(actualBtnText, expectedBtnText);
 	    Action.explicitWaitForElementTobeclickable(buyNowBtn, 30);
 	    Action.performActionwithExtentInfoLog(buyNowBtn, "click", "Clicking on : " + actualBtnText);
 	    Action.explicitWaitForElementTobeclickable(buyNowModalHeading, 30);
+	    String actualModalText = buyNowModalHeading.getText();
 	    Action.printAndAssert(actualModalText, expectedModalText);
 	    extentInfoLog("Buy Now modal is displayed : ", Action.isDisplayed(driver, buyNowModal));
 	}
