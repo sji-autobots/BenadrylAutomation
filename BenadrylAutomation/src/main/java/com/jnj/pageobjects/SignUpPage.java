@@ -16,6 +16,7 @@ import com.jnj.actions.Action;
 import com.jnj.base.BaseClass;
 
 public class SignUpPage extends BaseClass {
+
 	Actions actions;
 
 	/**
@@ -74,7 +75,7 @@ public class SignUpPage extends BaseClass {
 			Assert.fail("Logo not displayed");
 		}
 	}
-
+	
 	/**
 	 * Function to verify links on signup pop-up
 	 * 
@@ -85,6 +86,7 @@ public class SignUpPage extends BaseClass {
 	 * @param key        pass keyword
 	 * @param validation pass validation message
 	 */
+
 	public void EnterNameAndEmail(String fnameValue, String fname, String emailValue, String email, String key,
 			String validation) {
 		try {
