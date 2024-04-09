@@ -102,30 +102,15 @@ public class ProductPage extends BaseClass {
 	@FindBy(css = "#bv-product-reviews")
 	private WebElement reviewsSection;
 	
-	/**
-	 * Returns the WebElement of a 'Jump To' heading based on its text.
-	 *
-	 * @param headingText The text of the 'Jump To' heading.
-	 * @return WebElement The WebElement of the specified 'Jump To' heading.
-	 */
-	public WebElement getProductName(String path) { 
-		 return	 driver.findElement(By.xpath("//span[@class='node__title']//a[@href='/products/" + path + "']"));
+	private WebElement getProductName(String path) { 
+		 return	 driver.findElement(By.xpath("//span[@class='node__title']//a[@href='/" + path + "']"));
 	}	
 	
-	/**
-	 * Returns the WebElement of a 'Jump To' heading based on its text.
-	 *
-	 * @param headingText The text of the 'Jump To' heading.
-	 * @return WebElement The WebElement of the specified 'Jump To' heading.
-	 */
-	public WebElement getJumpToHeadings(String headingText) { 
+	private WebElement getJumpToHeadings(String headingText) { 
 		 return	 driver.findElement(By.xpath("//div[@class='jump-to-wrapper']//ul//li//a[text()='" + headingText + "']"));
 	}
 	
-	/**
-	 * Returns the WebElement of the Write a Review modal.
-	 */
-	public WebElement getWriteAReviewHeading() { 
+	private WebElement getWriteAReviewHeading() { 
 		 return	 driver.findElement(By.id("shadow-root")).getShadowRoot().findElement(By.cssSelector("#bv-ips-loading-text_bv-ips-title > span.ips__sc-r8pfgm-3.fINXNs"));
 	}
 	
@@ -138,7 +123,7 @@ public class ProductPage extends BaseClass {
 	public void visitDetailsPage(String path) {
 	    Action.performActionwithExtentInfoLog(prodHeaderMenu, "click", "Clicking on : " + prodHeaderMenu.getText());
 	    Action.performActionwithExtentInfoLog(getProductName(path), "click", "Clicking on : " + prodTileTitle.getText());
-	    Action.verifyPageUrl("products/" + path);
+	    Action.verifyPageUrl(path);
 	}
 	
 	/**
@@ -165,7 +150,6 @@ public class ProductPage extends BaseClass {
 	    this.visitPDP();
 	    String actualText = prodTitle.getText();
 	    Action.printAndAssert(actualText, expectedTitle);
-	    extentInfoLog("Title is displayed : ", Action.isDisplayed(driver, prodTitle));
 	}
 
 	/**
@@ -175,7 +159,6 @@ public class ProductPage extends BaseClass {
 	    this.visitPDP();
 	    String actualRating = prodRatingNum.getText();
 	    Action.printAndAssert(actualRating, expectedRating);
-	    extentInfoLog("Rating is displayed : ", Action.isDisplayed(driver, prodRating));
 	}
 
 	/**
@@ -186,7 +169,6 @@ public class ProductPage extends BaseClass {
 	    this.visitPDP();
 	    String actualOverview = prodOverviewTxt.getText();
 	    Action.printAndAssert(actualOverview, expectedOverview);
-	    extentInfoLog("Overview is displayed : ", Action.isDisplayed(driver, prodOverview));
 	}
 
 	/**
@@ -231,7 +213,6 @@ public class ProductPage extends BaseClass {
 	    Action.explicitWaitForElementTobeclickable(buyNowModalHeading, 30);
 	    String actualModalText = buyNowModalHeading.getText();
 	    Action.printAndAssert(actualModalText, expectedModalText);
-	    extentInfoLog("Buy Now modal is displayed : ", Action.isDisplayed(driver, buyNowModal));
 	}
 	
 	/**
@@ -279,6 +260,5 @@ public class ProductPage extends BaseClass {
 	    String actualHeadingText = actualHeadingElement.getText();
 	    extentInfoLog("Section is displayed : ", Action.isDisplayed(driver, actualHeadingElement));
 	    Action.printAndAssert(actualHeadingText, sectionHeading);
-	    extentInfoLog(jumpToHeadingText + " jump to heading verified");
 	}
 }
