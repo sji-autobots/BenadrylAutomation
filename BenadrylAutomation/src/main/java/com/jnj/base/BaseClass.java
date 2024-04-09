@@ -30,6 +30,7 @@ import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
 import com.jnj.pageobjects.OurIngredientsPage;
+import com.jnj.pageobjects.ProductPage;
 import com.jnj.pageobjects.SafetyInformationPage;
 import com.jnj.pageobjects.SignUpPage;
 import com.jnj.pageobjects.SitemapPage;
@@ -60,6 +61,7 @@ public class BaseClass {
 	public static ContactUsPage contact;
 	public static WhereToBuyPage wtb;
 	public static AllergiesPage allergies;
+	public static ProductPage pdp;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -106,6 +108,7 @@ public class BaseClass {
 		contact = new ContactUsPage();
 		wtb = new WhereToBuyPage();
 		allergies = new AllergiesPage();
+		pdp = new ProductPage();
 
 		driver.manage().window().maximize();
 		Action.implicitWait(driver, 10);

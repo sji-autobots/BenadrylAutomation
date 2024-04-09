@@ -19,6 +19,7 @@
 			<class name="com.jnj.testcases.ContactUsPageTest" />
 			<class name="com.jnj.testcases.WhereToBuyTest" />
 			<class name="com.jnj.testcases.AllergiesPageTest" />
+			<class name="com.jnj.testcases.ProductPageTest" />
 		</classes>
 	</test>
 </suite>

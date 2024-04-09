@@ -24,7 +24,6 @@ public class SignUpPage extends BaseClass {
 	 */
 	public SignUpPage() {
 		PageFactory.initElements(driver, this);
-		actions = new Actions(driver);
 	}
 
 	/**
