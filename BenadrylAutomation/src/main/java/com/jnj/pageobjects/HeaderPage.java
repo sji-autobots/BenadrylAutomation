@@ -30,43 +30,43 @@ public class HeaderPage extends BaseClass {
 	 * Locators
 	 */
 	@FindBy(xpath = "(//*[@id='header-search-btn']/span)[1]")
-	WebElement searchBtn;
+	private WebElement searchBtn;
 
 	@FindBy(xpath = "(//*[@id='header-wheretobuy-btn']/a)[1]")
-	WebElement whereToBuyBtn;
+	private WebElement whereToBuyBtn;
 
 	@FindBy(xpath = "(//a[contains(@class,'user-locale')])[1]")
-	WebElement userLocaleBtn;
+	private WebElement userLocaleBtn;
 
 	@FindBy(css = "#lightbox_pop")
-	WebElement lightBoxFrame;
+	private WebElement lightBoxFrame;
 
 	@FindBy(css = "#es")
-	WebElement espLocaleBtn;
+	private WebElement espLocaleBtn;
 
 	@FindBy(css = "#en")
-	WebElement engLocaleBtn;
+	private WebElement engLocaleBtn;
 
 	@FindBy(id = "header-search-btn")
-	WebElement search;
+	private WebElement search;
 
 	@FindBy(id = "edit-apachesolr-panels-search-form")
-	WebElement searchinput;
+	private WebElement searchinput;
 
 	@FindBy(id = "edit-submit")
-	WebElement searchGo;
+	private WebElement searchGo;
 
 	@FindBy(xpath = "(//a[text()='English'])[1]")
-	WebElement engLink;
+	private WebElement engLink;
 
 	@FindBy(xpath = "(//a[normalize-space()='Email Sign Up & Rewards'])[1]")
-	WebElement emailSignUpRewardLink;
+	private WebElement emailSignUpRewardLink;
 
 	public WebElement getMenuItem(String menu) {
 		return driver.findElement(By.xpath("//ul[@role='menubar']/li/*[text()='" + menu + "']"));
 	}
 
-	public WebElement getSubMenuItem(String menu, String subMenu) {
+	private WebElement getSubMenuItem(String menu, String subMenu) {
 		return driver.findElement(By.xpath("//*[text()='" + menu + "']/following-sibling::ul/li/*[text()=\"" + subMenu
 				+ "\"] [@role='menuitem']"));
 	}

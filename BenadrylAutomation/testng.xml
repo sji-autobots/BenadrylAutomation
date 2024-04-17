@@ -16,6 +16,8 @@
 			<class name="com.jnj.testcases.ListingPageTest" />
 			<class name="com.jnj.testcases.FooterPageTest" />
 			<class name="com.jnj.testcases.SafetyInformationPageTest" />
+			<class name="com.jnj.testcases.BenadrylUsesTest" />
+			<class name="com.jnj.testcases.SitemapPageTest" />
 		</classes>
 	</test>
 </suite>
