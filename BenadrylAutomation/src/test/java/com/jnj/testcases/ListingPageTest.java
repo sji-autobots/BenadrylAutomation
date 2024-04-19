@@ -27,6 +27,7 @@ public class ListingPageTest extends BaseClass {
         test = test.createNode(testcase);
         if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			home.closePrivacyPopup();
             plp.verifyBannerImage();
         } else {
             throw new SkipException("Test skipped : " + testcase);

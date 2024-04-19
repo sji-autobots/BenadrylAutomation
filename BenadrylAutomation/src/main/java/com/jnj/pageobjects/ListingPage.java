@@ -58,6 +58,9 @@ public class ListingPage extends BaseClass{
 	
 	@FindBy(id = "edit-sort-by")
 	WebElement sortBySelector;
+	
+	@FindBy(css = ".sfmc-careclub-lightbox-close")
+	private WebElement closeSignUpBtn;
     
     public WebElement getBanner(String text) {
         return driver.findElement(By.xpath("//div[@class='inner']/*[contains(.,'" + text + "')]"));
@@ -77,6 +80,18 @@ public class ListingPage extends BaseClass{
 			extentPassLog("Privacy pop-up displayed : ", true);
 			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Close button");
 		} else extentFailLog("Privacy pop-up displayed : ", false);
+	}
+	
+	/**
+	 * Function to click on close sign up pop-up button
+	 */
+	public void closeSignupPopup() {
+		Action.explicitWaitForElementTobeclickable(closeSignUpBtn, 30);
+		boolean eleDisplayed = closeSignUpBtn.isDisplayed();
+		if(eleDisplayed) {
+			extentPassLog("Privacy pop-up displayed : ", true);
+			Action.performActionwithExtentInfoLog(closeSignUpBtn, "click", "Clicking on : Close button");
+		} else extentFailLog("Signup pop-up displayed : ", false);
 	}
 
     /**
