@@ -84,19 +84,6 @@ public class ListingPage extends BaseClass {
 	}
 
 	/**
-	 * Function to click on close sign up pop-up button
-	 */
-	public void closeSignupPopup() {
-		Action.explicitWaitForElementTobeclickable(closeSignUpBtn, 30);
-		boolean eleDisplayed = closeSignUpBtn.isDisplayed();
-		if (eleDisplayed) {
-			extentPassLog("Privacy pop-up displayed : ", true);
-			Action.performActionwithExtentInfoLog(closeSignUpBtn, "click", "Clicking on : Close button");
-		} else
-			extentFailLog("Signup pop-up displayed : ", false);
-	}
-
-	/**
 	 * Visits a product listing page from the homepage.
 	 */
 	public void visitPLP() {
@@ -109,7 +96,7 @@ public class ListingPage extends BaseClass {
 	 */
 	public void verifyBannerImage() {
 		this.visitPLP();
-		extentInfoLog("Image is displayed : ", Action.isDisplayed(driver, bannerImage));
+		Assert.assertTrue(bannerImage.isDisplayed());
 	}
 
 	/**
@@ -121,7 +108,7 @@ public class ListingPage extends BaseClass {
 		WebElement actualElem = getBanner(text);
 		String actualText = actualElem.getText();
 		extentInfoLog("Banner heading is displayed : ", Action.isDisplayed(driver, actualElem));
-		Assert.assertEquals(actualText, text);
+		Action.printAndAssert(actualText, text);
 		extentInfoLog("Banner text verified");
 	}
 
@@ -133,9 +120,9 @@ public class ListingPage extends BaseClass {
 		this.visitPLP();
 		WebElement actualElem = getFilter(text);
 		String actualText = actualElem.getText();
-		extentInfoLog("Filter text is displayed : ", Action.isDisplayed(driver, actualElem));
+		Assert.assertTrue(actualElem.isDisplayed());
 		Action.performActionwithExtentInfoLog(actualElem, "click", "Clicking on : " + actualText);
-		extentInfoLog("Products are displayed : ", Action.isDisplayed(driver, productsPanel));
+		Assert.assertTrue(productsPanel.isDisplayed());
 	}
 
 	/**
@@ -144,8 +131,8 @@ public class ListingPage extends BaseClass {
 	 */
 	public void verifySortBy(String text) {
 		this.visitPLP();
-		extentInfoLog("Sort by displayed : ", Action.isDisplayed(driver, sortBySelector));
+		Assert.assertTrue(sortBySelector.isDisplayed());
 		Action.selectByValue(sortBySelector, text);
-		extentInfoLog("Products are displayed : ", Action.isDisplayed(driver, productsPanel));
+		Assert.assertTrue(productsPanel.isDisplayed());
 	}
 }
