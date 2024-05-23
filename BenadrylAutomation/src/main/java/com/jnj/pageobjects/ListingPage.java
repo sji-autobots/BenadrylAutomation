@@ -62,12 +62,43 @@ public class ListingPage extends BaseClass {
 	@FindBy(css = ".sfmc-careclub-lightbox-close")
 	private WebElement closeSignUpBtn;
 
+	@FindBy(id = "show-filter")
+	private WebElement showFiltersBtn;
+
 	private WebElement getBanner(String text) {
 		return driver.findElement(By.xpath("//div[@class='inner']/*[contains(.,'" + text + "')]"));
 	}
 
-	private WebElement getFilter(String text) {
+	private WebElement getQuickFilter(String text) {
 		return driver.findElement(By.xpath("//div[@class='filter-row-shortcuts']/a[contains(.,'" + text + "')]"));
+	}
+
+	private WebElement getArticle(String text) {
+		return driver.findElement(By.xpath("//img[@alt='" + text + "']"));
+	}
+
+	private WebElement getFilter(String text) {
+		return driver.findElement(By.xpath("//a[contains(.,'" + text + "')]"));
+	}
+
+	private WebElement getSubFilter(String text) {
+		return driver.findElement(By.xpath("//input//following-sibling::label[contains(@for,'field-product') and contains(.,'" + text + "')]/.."));
+	}
+
+	private WebElement getSubFilterCheckbox(String text) {
+		return driver.findElement(By.xpath("//input//following-sibling::label[contains(@for,'field-product') and contains(.,'" + text + "')]/../input"));
+	}
+
+	private int getNumberOfProducts(String text) {
+		String subFilterText = getSubFilter(text).getText();
+		String productCountString = subFilterText.substring(subFilterText.indexOf("(")+1, subFilterText.indexOf(")"));		
+		int numberOfProducts = Integer.parseInt(productCountString);
+		
+		return numberOfProducts;
+	}
+
+	private int numberOfVisibleTiles() {
+		return driver.findElements(By.xpath("//div[contains(@class,'views-row') and not(contains(@style,'display'))]")).size();
 	}
 
 	/**
@@ -118,7 +149,7 @@ public class ListingPage extends BaseClass {
 	 */
 	public void verifyQuickFilters(String text) {
 		this.visitPLP();
-		WebElement actualElem = getFilter(text);
+		WebElement actualElem = getQuickFilter(text);
 		String actualText = actualElem.getText();
 		Assert.assertTrue(actualElem.isDisplayed());
 		Action.performActionwithExtentInfoLog(actualElem, "click", "Clicking on : " + actualText);
@@ -134,5 +165,32 @@ public class ListingPage extends BaseClass {
 		Assert.assertTrue(sortBySelector.isDisplayed());
 		Action.selectByValue(sortBySelector, text);
 		Assert.assertTrue(productsPanel.isDisplayed());
+	}
+
+	/**
+	 * Visits a listing page from the homepage. Then, verifies the articles
+	 */
+	public void verifyArticles(String altTxt, String url) {
+		this.visitPLP();
+		WebElement articleElem = getArticle(altTxt);
+		Action.performActionwithExtentInfoLog(articleElem, "click", "Clicking on : " + altTxt);
+		String actualUrl = Action.getCurrentURL(driver);
+		Action.printAndAssert(actualUrl, url);
+	}
+
+	/**
+	 * Visits a listing page from the homepage. Then, verifies the articles
+	 */
+	public void verifyFilters(String filterText, String subFilter) {
+		this.visitPLP();
+		WebElement filterBtn = getFilter(filterText);
+		WebElement subFilterBtn = getSubFilterCheckbox(subFilter);
+		Action.performActionwithExtentInfoLog(showFiltersBtn, "click", "Clicking on : Filter button");
+		Action.performActionwithExtentInfoLog(filterBtn, "click", "Clicking on : " + filterText);
+		Action.performActionwithExtentInfoLog(subFilterBtn, "click", "Clicking on : " + subFilter);
+		Action.implicitWait(driver, 5);
+		int numberOfProducts = getNumberOfProducts(subFilter);
+		int numberOfTiles = numberOfVisibleTiles();
+		Action.printAndAssert(numberOfTiles, numberOfProducts);
 	}
 }

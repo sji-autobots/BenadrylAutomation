@@ -37,4 +37,14 @@ public class ListingPageProvider {
     public Object[][] sortBy() throws IOException {
         return provider.getData(dataPath, "sortBy");
     }
+
+    @org.testng.annotations.DataProvider(name = "article")
+    public Object[][] article() throws IOException {
+        return provider.getData(dataPath, "article");
+    }
+
+    @org.testng.annotations.DataProvider(name = "filter")
+    public Object[][] filter() throws IOException {
+        return provider.getData(dataPath, "filter");
+    }
 }

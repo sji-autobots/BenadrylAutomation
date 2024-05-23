@@ -64,6 +64,28 @@ public class ListingPageTest extends BaseClass {
 		}
 	}
 
+	@Test(priority = 5, dataProvider = "article", dataProviderClass = ListingPageProvider.class)
+	public void PLP_verifyArticles(String testcase, String execution, String altTxt, String url) {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			plp.verifyArticles(altTxt, url);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
+
+	@Test(priority = 6, dataProvider = "filter", dataProviderClass = ListingPageProvider.class)
+	public void PLP_verifyFilter(String testcase, String execution, String filterText, String subFilter) {
+		test = test.createNode(testcase);
+		if (execution.equalsIgnoreCase(defaultFlag)) {
+			selectEnv(runOn);
+			plp.verifyFilters(filterText, subFilter);
+		} else {
+			throw new SkipException("Test skipped : " + testcase);
+		}
+	}
+
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
