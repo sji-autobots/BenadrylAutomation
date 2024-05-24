@@ -89,7 +89,8 @@ public class ListingPage extends BaseClass {
 		return driver.findElement(By.xpath("//input//following-sibling::label[contains(@for,'field-product') and contains(.,'" + text + "')]/../input"));
 	}
 
-	private int getNumberOfProducts(String text) {
+	public int getNumberOfProducts(String text) {
+		Action.explicitWait(getSubFilter(text), 20);
 		String subFilterText = getSubFilter(text).getText();
 		String productCountString = subFilterText.substring(subFilterText.indexOf("(")+1, subFilterText.indexOf(")"));		
 		int numberOfProducts = Integer.parseInt(productCountString);
@@ -99,19 +100,6 @@ public class ListingPage extends BaseClass {
 
 	private int numberOfVisibleTiles() {
 		return driver.findElements(By.xpath("//div[contains(@class,'views-row') and not(contains(@style,'display'))]")).size();
-	}
-
-	/**
-	 * Function to click on close privacy pop-up button
-	 */
-	public void closePrivacyPopup() {
-		Action.explicitWaitForElementTobeclickable(closePrivacyBtn, 30);
-		boolean eleDisplayed = closePrivacyBtn.isDisplayed();
-		if (eleDisplayed) {
-			extentPassLog("Privacy pop-up displayed : ", true);
-			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Close button");
-		} else
-			extentFailLog("Privacy pop-up displayed : ", false);
 	}
 
 	/**
@@ -126,7 +114,6 @@ public class ListingPage extends BaseClass {
 	 * the listing page.
 	 */
 	public void verifyBannerImage() {
-		this.visitPLP();
 		Assert.assertTrue(bannerImage.isDisplayed());
 	}
 
@@ -135,7 +122,6 @@ public class ListingPage extends BaseClass {
 	 * the listing page.
 	 */
 	public void verifyBannerTexts(String text) {
-		this.visitPLP();
 		WebElement actualElem = getBanner(text);
 		String actualText = actualElem.getText();
 		extentInfoLog("Banner heading is displayed : ", Action.isDisplayed(driver, actualElem));
@@ -148,7 +134,6 @@ public class ListingPage extends BaseClass {
 	 * listing page.
 	 */
 	public void verifyQuickFilters(String text) {
-		this.visitPLP();
 		WebElement actualElem = getQuickFilter(text);
 		String actualText = actualElem.getText();
 		Assert.assertTrue(actualElem.isDisplayed());
@@ -161,7 +146,6 @@ public class ListingPage extends BaseClass {
 	 * the listing page.
 	 */
 	public void verifySortBy(String text) {
-		this.visitPLP();
 		Assert.assertTrue(sortBySelector.isDisplayed());
 		Action.selectByValue(sortBySelector, text);
 		Assert.assertTrue(productsPanel.isDisplayed());
@@ -171,7 +155,6 @@ public class ListingPage extends BaseClass {
 	 * Visits a listing page from the homepage. Then, verifies the articles
 	 */
 	public void verifyArticles(String altTxt, String url) {
-		this.visitPLP();
 		WebElement articleElem = getArticle(altTxt);
 		Action.performActionwithExtentInfoLog(articleElem, "click", "Clicking on : " + altTxt);
 		String actualUrl = Action.getCurrentURL(driver);
@@ -182,13 +165,9 @@ public class ListingPage extends BaseClass {
 	 * Visits a listing page from the homepage. Then, verifies the articles
 	 */
 	public void verifyFilters(String filterText, String subFilter) {
-		this.visitPLP();
-		WebElement filterBtn = getFilter(filterText);
-		WebElement subFilterBtn = getSubFilterCheckbox(subFilter);
 		Action.performActionwithExtentInfoLog(showFiltersBtn, "click", "Clicking on : Filter button");
-		Action.performActionwithExtentInfoLog(filterBtn, "click", "Clicking on : " + filterText);
-		Action.performActionwithExtentInfoLog(subFilterBtn, "click", "Clicking on : " + subFilter);
-		Action.implicitWait(driver, 5);
+		Action.performActionwithExtentInfoLog(getFilter(filterText), "click", "Clicking on : " + getFilter(filterText).getText());
+		Action.performActionwithExtentInfoLog(getSubFilterCheckbox(subFilter), "click", "Clicking on : " + getSubFilterCheckbox(subFilter).getText());
 		int numberOfProducts = getNumberOfProducts(subFilter);
 		int numberOfTiles = numberOfVisibleTiles();
 		Action.printAndAssert(numberOfTiles, numberOfProducts);

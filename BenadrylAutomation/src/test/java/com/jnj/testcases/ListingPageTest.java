@@ -25,6 +25,7 @@ public class ListingPageTest extends BaseClass {
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
 			home.closePrivacyPopup();
+			plp.visitPLP();
 			plp.verifyBannerImage();
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -36,6 +37,7 @@ public class ListingPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			plp.visitPLP();
 			plp.verifyBannerTexts(expectedText);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -47,6 +49,7 @@ public class ListingPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			plp.visitPLP();
 			plp.verifyQuickFilters(expectedText);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -58,6 +61,7 @@ public class ListingPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			plp.visitPLP();
 			plp.verifySortBy(selectorText);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -69,6 +73,7 @@ public class ListingPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			plp.visitPLP();
 			plp.verifyArticles(altTxt, url);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
@@ -80,6 +85,7 @@ public class ListingPageTest extends BaseClass {
 		test = test.createNode(testcase);
 		if (execution.equalsIgnoreCase(defaultFlag)) {
 			selectEnv(runOn);
+			plp.visitPLP();
 			plp.verifyFilters(filterText, subFilter);
 		} else {
 			throw new SkipException("Test skipped : " + testcase);
