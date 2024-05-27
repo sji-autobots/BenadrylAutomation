@@ -90,7 +90,9 @@ public class HomePage extends BaseClass{
 			extentPassLog("Privacy pop-up displayed : ", true);
 			Action.performActionwithExtentInfoLog(closePrivacyBtn, "click", "Clicking on : Privacy pop-up 'Close' button");
 			Action.explicitWaitForElementToDisappear(closePrivacyBtn, 10);
-		} else extentFailLog("Privacy pop-up displayed : ", false);
+		} else {
+			extentFailLog("Privacy pop-up displayed : ", false);
+		}
 	}
 	
 	/**

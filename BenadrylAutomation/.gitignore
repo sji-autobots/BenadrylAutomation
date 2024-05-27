@@ -1,8 +1,7 @@
+/target/
 /ExtentReport/
 /ScreenShot/
-/target/
-/test-output/
 /.settings/
 /.project/
 /.project
-
+/test-output/

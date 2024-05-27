@@ -29,6 +29,8 @@ import com.jnj.pageobjects.DifferencesPage;
 import com.jnj.pageobjects.FooterPage;
 import com.jnj.pageobjects.HeaderPage;
 import com.jnj.pageobjects.HomePage;
+import com.jnj.pageobjects.ListingPage;
+import com.jnj.pageobjects.ProductPage;
 import com.jnj.pageobjects.OurIngredientsPage;
 import com.jnj.pageobjects.ProductPage;
 import com.jnj.pageobjects.SafetyInformationPage;
@@ -54,6 +56,8 @@ public class BaseClass {
 	public static FooterPage footer;
 	public static ComparePage compare;
 	public static SignUpPage signup;
+	public static ProductPage pdp;
+	public static ListingPage plp;
 	public static OurIngredientsPage ingredient;
 	public static SafetyInformationPage safety;
 	public static SitemapPage sitemap;
@@ -61,7 +65,6 @@ public class BaseClass {
 	public static ContactUsPage contact;
 	public static WhereToBuyPage wtb;
 	public static AllergiesPage allergies;
-	public static ProductPage pdp;
 
 	@BeforeSuite
 	public void loadConfig() throws IOException {
@@ -101,6 +104,8 @@ public class BaseClass {
 		footer = new FooterPage();
 		compare = new ComparePage();
 		signup = new SignUpPage();
+		pdp = new ProductPage();
+		plp = new ListingPage();
 		ingredient = new OurIngredientsPage();
 		safety = new SafetyInformationPage();
 		sitemap = new SitemapPage();
